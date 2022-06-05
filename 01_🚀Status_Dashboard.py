@@ -1,6 +1,7 @@
 import streamlit as st
-from utils.get_tweets_from_user import TweetScraper
+from data.get_tweets_from_user import TweetScraper
 from datetime import date
+from settings import ENGINE_PATH
 
 
 st.set_page_config(
@@ -9,16 +10,11 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🦅TweetDash🦅")
+st.title("🚀 Twitter Status Dashboard")
+st.sidebar.title("🦅 TweetDash")
 
 user_name = st.text_input("Enter Your User Name", "@elonmusk")
 user_name = user_name.strip('@')
-
-st.sidebar.selectbox(
-    label="Choose Your ⭐️ Northstar Metric",
-    options=["New Followers", "New Active Followers"],
-    index=0
-)
 
 start_date = st.sidebar.date_input(label='Start date', value=date(2022, 6, 1))
 

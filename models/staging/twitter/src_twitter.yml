@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+ - name: twitter
+   database: d1vidifjnblb03
+   schema: twitter
+   tables:
+    - name: tweets_liked
+    - name: tweets_quoted
+    - name: tweets_replied_to
+    - name: tweets_retweeted 
+    - name: user_timelines

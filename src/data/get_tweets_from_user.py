@@ -11,7 +11,6 @@ BEARER_TOKEN = config("BEARER_TOKEN")
 engine = create_engine(ENGINE_PATH)
 db_conn = engine.connect()
 
-
 def bearer_oauth(r):
     """
     Method required by bearer token authentication.
@@ -110,7 +109,7 @@ class TweetScraper():
             name='user_timelines',
             con=db_conn,
             if_exists='append',
-            schema='raw'
+            schema='twitter'
         )
         return user_timeline_df
 
@@ -126,7 +125,7 @@ class TweetScraper():
             name='user_meta_data',
             con=db_conn,
             if_exists='replace',
-            schema='raw'
+            schema='twitter'
         )
         return user_meta_data_df
 
@@ -140,7 +139,7 @@ class TweetScraper():
                         name='tweets_liked',
                         con=db_conn,
                         if_exists='append',
-                        schema='raw'
+                        schema='twitter'
                     )
             if metrics['quote_count'] > 0:
                 quoters_df = self._get_quoters_for_tweet(row['id'])
@@ -149,7 +148,7 @@ class TweetScraper():
                         name='tweets_quoted',
                         con=db_conn,
                         if_exists='append',
-                        schema='raw'
+                        schema='twitter'
                     )
             if metrics['reply_count'] > 0:
                 repliers_df = self._get_repliers_for_tweet(row['id'])
@@ -158,7 +157,7 @@ class TweetScraper():
                         name='tweets_replied_to',
                         con=db_conn,
                         if_exists='append',
-                        schema='raw'
+                        schema='twitter'
                     )
             if metrics['retweet_count'] > 0:
                 rters_df = self._get_rters_for_tweet(row['id'])
@@ -167,7 +166,7 @@ class TweetScraper():
                         name='tweets_retweeted',
                         con=db_conn,
                         if_exists='append',
-                        schema='raw'
+                        schema='twitter'
                     )
         return 200
 

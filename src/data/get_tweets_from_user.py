@@ -107,9 +107,10 @@ class TweetScraper():
                 )
         user_timeline_df = clean_df_for_postgres(raw_user_timeline_df)
         user_timeline_df.to_sql(
-            name='raw_user_timelines',
+            name='user_timelines',
             con=db_conn,
-            if_exists='append'
+            if_exists='append',
+            schema='raw'
         )
         return user_timeline_df
 
@@ -122,9 +123,10 @@ class TweetScraper():
         raw_user_meta_data_df = pd.DataFrame(json_response)
         user_meta_data_df = clean_df_for_postgres(raw_user_meta_data_df)
         user_meta_data_df.to_sql(
-            name='raw_user_meta_data',
+            name='user_meta_data',
             con=db_conn,
-            if_exists='replace'
+            if_exists='replace',
+            schema='raw'
         )
         return user_meta_data_df
 
@@ -135,33 +137,37 @@ class TweetScraper():
                 likers_df = self._get_likers_for_tweet(row['id'])
                 if likers_df is not None:
                     likers_df.to_sql(
-                        name='raw_like_transaction_facts',
+                        name='tweets_liked',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='raw'
                     )
             if metrics['quote_count'] > 0:
                 quoters_df = self._get_quoters_for_tweet(row['id'])
                 if quoters_df is not None:
                     quoters_df.to_sql(
-                        name='raw_quote_transaction_facts',
+                        name='tweets_quoted',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='raw'
                     )
             if metrics['reply_count'] > 0:
                 repliers_df = self._get_repliers_for_tweet(row['id'])
                 if repliers_df is not None:
                     repliers_df.to_sql(
-                        name='raw_reply_transaction_facts',
+                        name='tweets_replied_to',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='raw'
                     )
             if metrics['retweet_count'] > 0:
                 rters_df = self._get_rters_for_tweet(row['id'])
                 if rters_df is not None:
                     rters_df.to_sql(
-                        name='raw_rt_transaction_facts',
+                        name='tweets_retweeted',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='raw'
                     )
         return 200
 
@@ -202,7 +208,7 @@ class TweetScraper():
         url = f"https://api.twitter.com/2/tweets/search/recent?query=conversation_id:{tweet_id}"
         params = {
             "user.fields": "created_at,id",
-            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
+            "tweet.fields": "attachments,author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
         }
         json_response = connect_to_endpoint(url, params)
         meta = json_response['meta']

@@ -11,6 +11,12 @@ BEARER_TOKEN = config("BEARER_TOKEN")
 engine = create_engine(ENGINE_PATH)
 db_conn = engine.connect()
 
+# db_conn.execute('drop table if exists twitter.tweets_liked cascade')
+# db_conn.execute('drop table if exists twitter.tweets_quoted cascade')
+# db_conn.execute('drop table if exists twitter.tweets_replied_to cascade')
+# db_conn.execute('drop table if exists twitter.tweets_retweeted cascade')
+
+
 def bearer_oauth(r):
     """
     Method required by bearer token authentication.
@@ -135,6 +141,7 @@ class TweetScraper():
             if metrics['like_count'] > 0:
                 likers_df = self._get_likers_for_tweet(row['id'])
                 if likers_df is not None:
+                    likers_df['tweet_id'] = row['id']
                     likers_df.to_sql(
                         name='tweets_liked',
                         con=db_conn,
@@ -144,6 +151,7 @@ class TweetScraper():
             if metrics['quote_count'] > 0:
                 quoters_df = self._get_quoters_for_tweet(row['id'])
                 if quoters_df is not None:
+                    quoters_df['tweet_id'] = row['id']
                     quoters_df.to_sql(
                         name='tweets_quoted',
                         con=db_conn,
@@ -153,6 +161,7 @@ class TweetScraper():
             if metrics['reply_count'] > 0:
                 repliers_df = self._get_repliers_for_tweet(row['id'])
                 if repliers_df is not None:
+                    repliers_df['tweet_id'] = row['id']
                     repliers_df.to_sql(
                         name='tweets_replied_to',
                         con=db_conn,
@@ -162,6 +171,7 @@ class TweetScraper():
             if metrics['retweet_count'] > 0:
                 rters_df = self._get_rters_for_tweet(row['id'])
                 if rters_df is not None:
+                    rters_df['tweet_id'] = row['id']
                     rters_df.to_sql(
                         name='tweets_retweeted',
                         con=db_conn,

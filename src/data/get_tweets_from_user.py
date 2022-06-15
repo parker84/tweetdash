@@ -1,8 +1,10 @@
+from cmath import isnan
 import json
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
 import json
+import numpy as np
 from decouple import config
 
 ENGINE_PATH = f"postgresql://{config('DB_USER')}:{config('DB_PWD')}@{config('DB_HOST')}/{config('DB')}"
@@ -15,6 +17,7 @@ db_conn = engine.connect()
 # db_conn.execute('drop table if exists twitter.tweets_quoted cascade')
 # db_conn.execute('drop table if exists twitter.tweets_replied_to cascade')
 # db_conn.execute('drop table if exists twitter.tweets_retweeted cascade')
+# db_conn.execute('drop table if exists twitter.user_meta_data cascade')
 
 
 def bearer_oauth(r):
@@ -59,7 +62,7 @@ class TweetScraper():
         self.end_time = end_time
         self.user_id = self.get_user_id_from_user_name()
         self.user_timeline_df = self._scrape_n_save_user_timeline()
-        self.user_meta_data_df = self._scrape_n_save_user_meta_data()
+        self.user_meta_data_df = self._scrape_n_save_user_meta_data(self.user_id)
         self._scrape_n_save_interactions_from_tweets()
 
     def get_user_id_from_user_name(self):
@@ -119,18 +122,18 @@ class TweetScraper():
         )
         return user_timeline_df
 
-    def _scrape_n_save_user_meta_data(self) -> pd.DataFrame:
+    def _scrape_n_save_user_meta_data(self, user_id) -> pd.DataFrame:
         params = {
             "user.fields": "created_at,description,public_metrics,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld"
         }
-        url = f"https://api.twitter.com/2/users?ids={self.user_id}"
+        url = f"https://api.twitter.com/2/users?ids={user_id}"
         json_response = connect_to_endpoint(url, params)
         raw_user_meta_data_df = pd.DataFrame(json_response)
         user_meta_data_df = clean_df_for_postgres(raw_user_meta_data_df)
         user_meta_data_df.to_sql(
             name='user_meta_data',
             con=db_conn,
-            if_exists='replace',
+            if_exists='append',
             schema='twitter'
         )
         return user_meta_data_df
@@ -138,6 +141,13 @@ class TweetScraper():
     def _scrape_n_save_interactions_from_tweets(self) -> int:
         for ix, row in self.user_timeline_df.iterrows():
             metrics = eval(row['public_metrics'])
+            if not (
+                row['in_reply_to_user_id'] == 'nan'
+                or row['in_reply_to_user_id'] is None
+            ):
+                self._scrape_n_save_user_meta_data(
+                    row['in_reply_to_user_id']
+                )
             if metrics['like_count'] > 0:
                 likers_df = self._get_likers_for_tweet(row['id'])
                 if likers_df is not None:

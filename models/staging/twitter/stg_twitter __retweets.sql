@@ -5,4 +5,4 @@ select
     cast(tweet_id as varchar) as tweet_id,
     name as user_name_readable,
     username as user_name
-from {{ source('twitter', 'tweets_liked') }}
+from {{ source('twitter', 'tweets_retweeted') }}

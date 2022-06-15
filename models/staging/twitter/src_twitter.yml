@@ -10,3 +10,4 @@ sources:
     - name: tweets_replied_to
     - name: tweets_retweeted 
     - name: user_timelines
+    - name: user_meta_data

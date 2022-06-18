@@ -7,5 +7,5 @@ select
     cast(description as varchar) as description,
     cast(public_metrics as varchar) as public_metrics,
     cast(url as varchar) as url,
-    cast(location as varchar) as location,
+    cast(location as varchar) as location
 from {{ source('twitter', 'user_meta_data') }}

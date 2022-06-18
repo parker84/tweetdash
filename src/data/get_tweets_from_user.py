@@ -1,8 +1,10 @@
+from cmath import isnan
 import json
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
 import json
+import numpy as np
 from decouple import config
 
 ENGINE_PATH = f"postgresql://{config('DB_USER')}:{config('DB_PWD')}@{config('DB_HOST')}/{config('DB')}"
@@ -10,6 +12,12 @@ BEARER_TOKEN = config("BEARER_TOKEN")
 
 engine = create_engine(ENGINE_PATH)
 db_conn = engine.connect()
+
+# db_conn.execute('drop table if exists twitter.tweets_liked cascade')
+# db_conn.execute('drop table if exists twitter.tweets_quoted cascade')
+# db_conn.execute('drop table if exists twitter.tweets_replied_to cascade')
+# db_conn.execute('drop table if exists twitter.tweets_retweeted cascade')
+# db_conn.execute('drop table if exists twitter.user_meta_data cascade')
 
 
 def bearer_oauth(r):
@@ -54,7 +62,7 @@ class TweetScraper():
         self.end_time = end_time
         self.user_id = self.get_user_id_from_user_name()
         self.user_timeline_df = self._scrape_n_save_user_timeline()
-        self.user_meta_data_df = self._scrape_n_save_user_meta_data()
+        self.user_meta_data_df = self._scrape_n_save_user_meta_data(self.user_id)
         self._scrape_n_save_interactions_from_tweets()
 
     def get_user_id_from_user_name(self):
@@ -107,61 +115,86 @@ class TweetScraper():
                 )
         user_timeline_df = clean_df_for_postgres(raw_user_timeline_df)
         user_timeline_df.to_sql(
-            name='raw_user_timelines',
+            name='user_timelines',
             con=db_conn,
-            if_exists='append'
+            if_exists='append',
+            schema='twitter'
         )
         return user_timeline_df
 
-    def _scrape_n_save_user_meta_data(self) -> pd.DataFrame:
+    def _scrape_n_save_user_meta_data(self, user_id) -> pd.DataFrame:
         params = {
             "user.fields": "created_at,description,public_metrics,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld"
         }
-        url = f"https://api.twitter.com/2/users?ids={self.user_id}"
+        url = f"https://api.twitter.com/2/users?ids={user_id}"
         json_response = connect_to_endpoint(url, params)
         raw_user_meta_data_df = pd.DataFrame(json_response)
         user_meta_data_df = clean_df_for_postgres(raw_user_meta_data_df)
         user_meta_data_df.to_sql(
-            name='raw_user_meta_data',
+            name='user_meta_data',
             con=db_conn,
-            if_exists='replace'
+            if_exists='append',
+            schema='twitter'
         )
         return user_meta_data_df
 
     def _scrape_n_save_interactions_from_tweets(self) -> int:
         for ix, row in self.user_timeline_df.iterrows():
             metrics = eval(row['public_metrics'])
+            if not (
+                row['in_reply_to_user_id'] == 'nan'
+                or row['in_reply_to_user_id'] is None
+            ):
+                self._scrape_n_save_user_meta_data(
+                    row['in_reply_to_user_id']
+                )
             if metrics['like_count'] > 0:
                 likers_df = self._get_likers_for_tweet(row['id'])
                 if likers_df is not None:
+                    likers_df['tweet_id'] = row['id']
+                    likers_df['tweet_created_at'] = row['created_at']
+                    likers_df['author_id'] = row['author_id']
                     likers_df.to_sql(
-                        name='raw_like_transaction_facts',
+                        name='tweets_liked',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='twitter'
                     )
             if metrics['quote_count'] > 0:
                 quoters_df = self._get_quoters_for_tweet(row['id'])
                 if quoters_df is not None:
+                    quoters_df['tweet_id'] = row['id']
+                    quoters_df['tweet_created_at'] = row['created_at']
+                    quoters_df['author_id'] = row['author_id']
                     quoters_df.to_sql(
-                        name='raw_quote_transaction_facts',
+                        name='tweets_quoted',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='twitter'
                     )
             if metrics['reply_count'] > 0:
                 repliers_df = self._get_repliers_for_tweet(row['id'])
                 if repliers_df is not None:
+                    repliers_df['tweet_id'] = row['id']
+                    repliers_df['tweet_created_at'] = row['created_at']
+                    repliers_df['author_id'] = row['author_id']
                     repliers_df.to_sql(
-                        name='raw_reply_transaction_facts',
+                        name='tweets_replied_to',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='twitter'
                     )
             if metrics['retweet_count'] > 0:
                 rters_df = self._get_rters_for_tweet(row['id'])
                 if rters_df is not None:
+                    rters_df['tweet_id'] = row['id']
+                    rters_df['tweet_created_at'] = row['created_at']
+                    rters_df['author_id'] = row['author_id']
                     rters_df.to_sql(
-                        name='raw_rt_transaction_facts',
+                        name='tweets_retweeted',
                         con=db_conn,
-                        if_exists='append'
+                        if_exists='append',
+                        schema='twitter'
                     )
         return 200
 
@@ -202,7 +235,7 @@ class TweetScraper():
         url = f"https://api.twitter.com/2/tweets/search/recent?query=conversation_id:{tweet_id}"
         params = {
             "user.fields": "created_at,id",
-            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
+            "tweet.fields": "attachments,author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
         }
         json_response = connect_to_endpoint(url, params)
         meta = json_response['meta']

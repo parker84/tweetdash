@@ -128,7 +128,7 @@ class TweetScraper():
         }
         url = f"https://api.twitter.com/2/users?ids={user_id}"
         json_response = connect_to_endpoint(url, params)
-        raw_user_meta_data_df = pd.DataFrame(json_response)
+        raw_user_meta_data_df = pd.DataFrame(json_response['data'])
         user_meta_data_df = clean_df_for_postgres(raw_user_meta_data_df)
         user_meta_data_df.to_sql(
             name='user_meta_data',

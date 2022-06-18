@@ -152,6 +152,8 @@ class TweetScraper():
                 likers_df = self._get_likers_for_tweet(row['id'])
                 if likers_df is not None:
                     likers_df['tweet_id'] = row['id']
+                    likers_df['tweet_created_at'] = row['created_at']
+                    likers_df['author_id'] = row['author_id']
                     likers_df.to_sql(
                         name='tweets_liked',
                         con=db_conn,
@@ -162,6 +164,8 @@ class TweetScraper():
                 quoters_df = self._get_quoters_for_tweet(row['id'])
                 if quoters_df is not None:
                     quoters_df['tweet_id'] = row['id']
+                    quoters_df['tweet_created_at'] = row['created_at']
+                    quoters_df['author_id'] = row['author_id']
                     quoters_df.to_sql(
                         name='tweets_quoted',
                         con=db_conn,
@@ -172,6 +176,8 @@ class TweetScraper():
                 repliers_df = self._get_repliers_for_tweet(row['id'])
                 if repliers_df is not None:
                     repliers_df['tweet_id'] = row['id']
+                    repliers_df['tweet_created_at'] = row['created_at']
+                    repliers_df['author_id'] = row['author_id']
                     repliers_df.to_sql(
                         name='tweets_replied_to',
                         con=db_conn,
@@ -182,6 +188,8 @@ class TweetScraper():
                 rters_df = self._get_rters_for_tweet(row['id'])
                 if rters_df is not None:
                     rters_df['tweet_id'] = row['id']
+                    rters_df['tweet_created_at'] = row['created_at']
+                    rters_df['author_id'] = row['author_id']
                     rters_df.to_sql(
                         name='tweets_retweeted',
                         con=db_conn,

@@ -6240,3 +6240,837 @@ limit 500
 2022-06-18 21:47:36.049327 (Thread-118): handling status request
 2022-06-18 21:47:36.049766 (Thread-118): 21:47:36  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd26c0ebf70>]}
 2022-06-18 21:47:36.050277 (Thread-118): sending response (<Response 1742 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:37.511492 (Thread-119): 21:47:37  Unable to do partial parsing because config vars, config profile, or config target have changed
+2022-06-18 21:47:37.511848 (Thread-119): 21:47:37  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd26c0dbee0>]}
+2022-06-18 21:47:37.549876 (Thread-119): 21:47:37  Parsing macros/relations.sql
+2022-06-18 21:47:37.551592 (Thread-119): 21:47:37  Parsing macros/adapters.sql
+2022-06-18 21:47:37.573046 (Thread-119): 21:47:37  Parsing macros/catalog.sql
+2022-06-18 21:47:37.575235 (Thread-119): 21:47:37  Parsing macros/materializations/snapshot_merge.sql
+2022-06-18 21:47:37.576951 (Thread-119): 21:47:37  Parsing macros/adapters/metadata.sql
+2022-06-18 21:47:37.584031 (Thread-119): 21:47:37  Parsing macros/adapters/columns.sql
+2022-06-18 21:47:37.593536 (Thread-119): 21:47:37  Parsing macros/adapters/freshness.sql
+2022-06-18 21:47:37.596651 (Thread-119): 21:47:37  Parsing macros/adapters/persist_docs.sql
+2022-06-18 21:47:37.601190 (Thread-119): 21:47:37  Parsing macros/adapters/relation.sql
+2022-06-18 21:47:37.610268 (Thread-119): 21:47:37  Parsing macros/adapters/schema.sql
+2022-06-18 21:47:37.612368 (Thread-119): 21:47:37  Parsing macros/adapters/indexes.sql
+2022-06-18 21:47:37.615142 (Thread-119): 21:47:37  Parsing macros/get_custom_name/get_custom_schema.sql
+2022-06-18 21:47:37.617725 (Thread-119): 21:47:37  Parsing macros/get_custom_name/get_custom_alias.sql
+2022-06-18 21:47:37.619163 (Thread-119): 21:47:37  Parsing macros/get_custom_name/get_custom_database.sql
+2022-06-18 21:47:37.620707 (Thread-119): 21:47:37  Parsing macros/etc/datetime.sql
+2022-06-18 21:47:37.629235 (Thread-119): 21:47:37  Parsing macros/etc/statement.sql
+2022-06-18 21:47:37.633939 (Thread-119): 21:47:37  Parsing macros/generic_test_sql/unique.sql
+2022-06-18 21:47:37.634651 (Thread-119): 21:47:37  Parsing macros/generic_test_sql/not_null.sql
+2022-06-18 21:47:37.635234 (Thread-119): 21:47:37  Parsing macros/generic_test_sql/accepted_values.sql
+2022-06-18 21:47:37.636581 (Thread-119): 21:47:37  Parsing macros/generic_test_sql/relationships.sql
+2022-06-18 21:47:37.637473 (Thread-119): 21:47:37  Parsing macros/materializations/configs.sql
+2022-06-18 21:47:37.639824 (Thread-119): 21:47:37  Parsing macros/materializations/hooks.sql
+2022-06-18 21:47:37.643555 (Thread-119): 21:47:37  Parsing macros/materializations/models/table/table.sql
+2022-06-18 21:47:37.650928 (Thread-119): 21:47:37  Parsing macros/materializations/models/table/create_table_as.sql
+2022-06-18 21:47:37.653763 (Thread-119): 21:47:37  Parsing macros/materializations/models/view/create_or_replace_view.sql
+2022-06-18 21:47:37.656336 (Thread-119): 21:47:37  Parsing macros/materializations/models/view/helpers.sql
+2022-06-18 21:47:37.657630 (Thread-119): 21:47:37  Parsing macros/materializations/models/view/create_view_as.sql
+2022-06-18 21:47:37.659846 (Thread-119): 21:47:37  Parsing macros/materializations/models/view/view.sql
+2022-06-18 21:47:37.666767 (Thread-119): 21:47:37  Parsing macros/materializations/models/incremental/incremental.sql
+2022-06-18 21:47:37.676746 (Thread-119): 21:47:37  Parsing macros/materializations/models/incremental/on_schema_change.sql
+2022-06-18 21:47:37.691948 (Thread-119): 21:47:37  Parsing macros/materializations/models/incremental/is_incremental.sql
+2022-06-18 21:47:37.693585 (Thread-119): 21:47:37  Parsing macros/materializations/models/incremental/merge.sql
+2022-06-18 21:47:37.711958 (Thread-119): 21:47:37  Parsing macros/materializations/models/incremental/column_helpers.sql
+2022-06-18 21:47:37.716417 (Thread-119): 21:47:37  Parsing macros/materializations/seeds/helpers.sql
+2022-06-18 21:47:37.732464 (Thread-119): 21:47:37  Parsing macros/materializations/seeds/seed.sql
+2022-06-18 21:47:37.738402 (Thread-119): 21:47:37  Parsing macros/materializations/tests/helpers.sql
+2022-06-18 21:47:37.740168 (Thread-119): 21:47:37  Parsing macros/materializations/tests/test.sql
+2022-06-18 21:47:37.744451 (Thread-119): 21:47:37  Parsing macros/materializations/tests/where_subquery.sql
+2022-06-18 21:47:37.746221 (Thread-119): 21:47:37  Parsing macros/materializations/snapshots/helpers.sql
+2022-06-18 21:47:37.763103 (Thread-119): 21:47:37  Parsing macros/materializations/snapshots/strategies.sql
+2022-06-18 21:47:37.779366 (Thread-119): 21:47:37  Parsing macros/materializations/snapshots/snapshot_merge.sql
+2022-06-18 21:47:37.781052 (Thread-119): 21:47:37  Parsing macros/materializations/snapshots/snapshot.sql
+2022-06-18 21:47:37.792614 (Thread-119): 21:47:37  Parsing tests/generic/builtin.sql
+2022-06-18 21:47:37.958234 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:47:37.960756 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:47:37.962889 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__ timelines.sql
+2022-06-18 21:47:37.964777 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__users.sql
+2022-06-18 21:47:37.966641 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:47:37.968724 (Thread-119): 21:47:37  1699: static parser successfully parsed staging/twitter/stg_twitter__retweets.sql
+2022-06-18 21:47:37.970984 (Thread-119): 21:47:37  1699: static parser successfully parsed intermediate/int_author_follower_combos_per_tweet.sql
+2022-06-18 21:47:37.973149 (Thread-119): 21:47:37  1699: static parser successfully parsed marts/fct_factless_follower_attribution.sql
+2022-06-18 21:47:37.975104 (Thread-119): 21:47:37  1699: static parser successfully parsed marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:47:37.976996 (Thread-119): 21:47:37  1699: static parser successfully parsed marts/dim_users.sql
+2022-06-18 21:47:37.979100 (Thread-119): 21:47:37  1699: static parser successfully parsed marts/dim_tweets.sql
+2022-06-18 21:47:37.981485 (Thread-119): 21:47:37  1699: static parser successfully parsed marts/fct_transaction_interactions_per_tweet_and_follower.sql
+2022-06-18 21:47:37.996006 (Thread-120): handling status request
+2022-06-18 21:47:38.008731 (Thread-120): 21:47:38  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd3d130>]}
+2022-06-18 21:47:38.009269 (Thread-120): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:38.013919 (Thread-121): handling status request
+2022-06-18 21:47:38.014212 (Thread-121): 21:47:38  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd3da60>]}
+2022-06-18 21:47:38.014568 (Thread-121): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:38.041294 (Thread-119): 21:47:38  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:47:38.046707 (Thread-119): 21:47:38  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd3d490>]}
+2022-06-18 21:47:39.160382 (Thread-122): handling status request
+2022-06-18 21:47:39.160839 (Thread-122): 21:47:39  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd9a730>]}
+2022-06-18 21:47:39.185564 (Thread-123): handling status request
+2022-06-18 21:47:39.185989 (Thread-123): 21:47:39  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cda0820>]}
+2022-06-18 21:47:39.194021 (Thread-122): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:39.194754 (Thread-123): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:53.197090 (Thread-124): handling status request
+2022-06-18 21:47:53.197500 (Thread-124): 21:47:53  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cda0520>]}
+2022-06-18 21:47:53.198427 (Thread-124): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:53.370307 (Thread-125): handling status request
+2022-06-18 21:47:53.370742 (Thread-125): 21:47:53  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cda01f0>]}
+2022-06-18 21:47:53.371638 (Thread-125): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:53.389996 (Thread-126): handling cli_args request
+2022-06-18 21:47:53.390264 (Thread-126): 21:47:53  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cda0a00>]}
+2022-06-18 21:47:55.512470 (Thread-126): sending response (<Response 138 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:55.561129 (MainThread): 21:47:55  Unable to do partial parsing because config vars, config profile, or config target have changed
+2022-06-18 21:47:55.561617 (MainThread): 21:47:55  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5e3a5fb20>]}
+2022-06-18 21:47:55.600101 (MainThread): 21:47:55  Parsing macros/relations.sql
+2022-06-18 21:47:55.602302 (MainThread): 21:47:55  Parsing macros/adapters.sql
+2022-06-18 21:47:55.624063 (MainThread): 21:47:55  Parsing macros/catalog.sql
+2022-06-18 21:47:55.626265 (MainThread): 21:47:55  Parsing macros/materializations/snapshot_merge.sql
+2022-06-18 21:47:55.627838 (MainThread): 21:47:55  Parsing macros/adapters/metadata.sql
+2022-06-18 21:47:55.634923 (MainThread): 21:47:55  Parsing macros/adapters/columns.sql
+2022-06-18 21:47:55.644563 (MainThread): 21:47:55  Parsing macros/adapters/freshness.sql
+2022-06-18 21:47:55.647438 (MainThread): 21:47:55  Parsing macros/adapters/persist_docs.sql
+2022-06-18 21:47:55.651819 (MainThread): 21:47:55  Parsing macros/adapters/relation.sql
+2022-06-18 21:47:55.661423 (MainThread): 21:47:55  Parsing macros/adapters/schema.sql
+2022-06-18 21:47:55.663483 (MainThread): 21:47:55  Parsing macros/adapters/indexes.sql
+2022-06-18 21:47:55.666153 (MainThread): 21:47:55  Parsing macros/get_custom_name/get_custom_schema.sql
+2022-06-18 21:47:55.668517 (MainThread): 21:47:55  Parsing macros/get_custom_name/get_custom_alias.sql
+2022-06-18 21:47:55.669951 (MainThread): 21:47:55  Parsing macros/get_custom_name/get_custom_database.sql
+2022-06-18 21:47:55.671532 (MainThread): 21:47:55  Parsing macros/etc/datetime.sql
+2022-06-18 21:47:55.679742 (MainThread): 21:47:55  Parsing macros/etc/statement.sql
+2022-06-18 21:47:55.684070 (MainThread): 21:47:55  Parsing macros/generic_test_sql/unique.sql
+2022-06-18 21:47:55.684774 (MainThread): 21:47:55  Parsing macros/generic_test_sql/not_null.sql
+2022-06-18 21:47:55.685287 (MainThread): 21:47:55  Parsing macros/generic_test_sql/accepted_values.sql
+2022-06-18 21:47:55.686680 (MainThread): 21:47:55  Parsing macros/generic_test_sql/relationships.sql
+2022-06-18 21:47:55.687502 (MainThread): 21:47:55  Parsing macros/materializations/configs.sql
+2022-06-18 21:47:55.689758 (MainThread): 21:47:55  Parsing macros/materializations/hooks.sql
+2022-06-18 21:47:55.693522 (MainThread): 21:47:55  Parsing macros/materializations/models/table/table.sql
+2022-06-18 21:47:55.700902 (MainThread): 21:47:55  Parsing macros/materializations/models/table/create_table_as.sql
+2022-06-18 21:47:55.738466 (Thread-127): handling poll request
+2022-06-18 21:47:55.738936 (Thread-127): 21:47:55  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd9ac70>]}
+2022-06-18 21:47:55.739932 (Thread-127): sending response (<Response 7927 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:55.703730 (MainThread): 21:47:55  Parsing macros/materializations/models/view/create_or_replace_view.sql
+2022-06-18 21:47:55.706318 (MainThread): 21:47:55  Parsing macros/materializations/models/view/helpers.sql
+2022-06-18 21:47:55.707632 (MainThread): 21:47:55  Parsing macros/materializations/models/view/create_view_as.sql
+2022-06-18 21:47:55.709864 (MainThread): 21:47:55  Parsing macros/materializations/models/view/view.sql
+2022-06-18 21:47:55.716955 (MainThread): 21:47:55  Parsing macros/materializations/models/incremental/incremental.sql
+2022-06-18 21:47:55.726832 (MainThread): 21:47:55  Parsing macros/materializations/models/incremental/on_schema_change.sql
+2022-06-18 21:47:55.742147 (MainThread): 21:47:55  Parsing macros/materializations/models/incremental/is_incremental.sql
+2022-06-18 21:47:55.743699 (MainThread): 21:47:55  Parsing macros/materializations/models/incremental/merge.sql
+2022-06-18 21:47:55.754650 (MainThread): 21:47:55  Parsing macros/materializations/models/incremental/column_helpers.sql
+2022-06-18 21:47:55.758957 (MainThread): 21:47:55  Parsing macros/materializations/seeds/helpers.sql
+2022-06-18 21:47:55.774964 (MainThread): 21:47:55  Parsing macros/materializations/seeds/seed.sql
+2022-06-18 21:47:55.780849 (MainThread): 21:47:55  Parsing macros/materializations/tests/helpers.sql
+2022-06-18 21:47:55.782520 (MainThread): 21:47:55  Parsing macros/materializations/tests/test.sql
+2022-06-18 21:47:55.786832 (MainThread): 21:47:55  Parsing macros/materializations/tests/where_subquery.sql
+2022-06-18 21:47:55.788568 (MainThread): 21:47:55  Parsing macros/materializations/snapshots/helpers.sql
+2022-06-18 21:47:55.799582 (MainThread): 21:47:55  Parsing macros/materializations/snapshots/strategies.sql
+2022-06-18 21:47:55.816441 (MainThread): 21:47:55  Parsing macros/materializations/snapshots/snapshot_merge.sql
+2022-06-18 21:47:55.818077 (MainThread): 21:47:55  Parsing macros/materializations/snapshots/snapshot.sql
+2022-06-18 21:47:55.829916 (MainThread): 21:47:55  Parsing tests/generic/builtin.sql
+2022-06-18 21:47:56.000569 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:47:56.012227 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:47:56.014172 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__ timelines.sql
+2022-06-18 21:47:56.016094 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__users.sql
+2022-06-18 21:47:56.018032 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:47:56.019857 (MainThread): 21:47:56  1699: static parser successfully parsed staging/twitter/stg_twitter__retweets.sql
+2022-06-18 21:47:56.022107 (MainThread): 21:47:56  1699: static parser successfully parsed intermediate/int_author_follower_combos_per_tweet.sql
+2022-06-18 21:47:56.024452 (MainThread): 21:47:56  1699: static parser successfully parsed marts/fct_factless_follower_attribution.sql
+2022-06-18 21:47:56.026226 (MainThread): 21:47:56  1699: static parser successfully parsed marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:47:56.028049 (MainThread): 21:47:56  1699: static parser successfully parsed marts/dim_users.sql
+2022-06-18 21:47:56.029860 (MainThread): 21:47:56  1699: static parser successfully parsed marts/dim_tweets.sql
+2022-06-18 21:47:56.032048 (MainThread): 21:47:56  1699: static parser successfully parsed marts/fct_transaction_interactions_per_tweet_and_follower.sql
+2022-06-18 21:47:56.097804 (MainThread): 21:47:56  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__likes
+- models.staging.twitter.stg_twitter__timelines
+
+2022-06-18 21:47:56.102875 (MainThread): 21:47:56  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5e116dd00>]}
+2022-06-18 21:47:56.129471 (MainThread): 21:47:56  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5e116dc40>]}
+2022-06-18 21:47:56.129770 (MainThread): 21:47:56  Found 12 models, 0 tests, 0 snapshots, 0 analyses, 165 macros, 0 operations, 0 seed files, 6 sources, 0 exposures, 0 metrics
+2022-06-18 21:47:56.131386 (MainThread): 21:47:56  
+2022-06-18 21:47:56.131691 (MainThread): 21:47:56  Acquiring new postgres connection "master"
+2022-06-18 21:47:56.133052 (ThreadPoolExecutor-0_0): 21:47:56  Acquiring new postgres connection "list_d1vidifjnblb03"
+2022-06-18 21:47:56.141997 (ThreadPoolExecutor-0_0): 21:47:56  Using postgres connection "list_d1vidifjnblb03"
+2022-06-18 21:47:56.142107 (ThreadPoolExecutor-0_0): 21:47:56  On list_d1vidifjnblb03: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "connection_name": "list_d1vidifjnblb03"} */
+
+    select distinct nspname from pg_namespace
+  
+2022-06-18 21:47:56.142193 (ThreadPoolExecutor-0_0): 21:47:56  Opening a new connection, currently in state init
+2022-06-18 21:47:56.165456 (ThreadPoolExecutor-0_0): 21:47:56  SQL status: SELECT 7 in 0.02 seconds
+2022-06-18 21:47:56.166598 (ThreadPoolExecutor-0_0): 21:47:56  On list_d1vidifjnblb03: Close
+2022-06-18 21:47:56.168328 (ThreadPoolExecutor-1_0): 21:47:56  Acquiring new postgres connection "list_d1vidifjnblb03_dbt_bparker"
+2022-06-18 21:47:56.173788 (ThreadPoolExecutor-1_0): 21:47:56  Using postgres connection "list_d1vidifjnblb03_dbt_bparker"
+2022-06-18 21:47:56.173898 (ThreadPoolExecutor-1_0): 21:47:56  On list_d1vidifjnblb03_dbt_bparker: BEGIN
+2022-06-18 21:47:56.173984 (ThreadPoolExecutor-1_0): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.194541 (ThreadPoolExecutor-1_0): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.194660 (ThreadPoolExecutor-1_0): 21:47:56  Using postgres connection "list_d1vidifjnblb03_dbt_bparker"
+2022-06-18 21:47:56.194737 (ThreadPoolExecutor-1_0): 21:47:56  On list_d1vidifjnblb03_dbt_bparker: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "connection_name": "list_d1vidifjnblb03_dbt_bparker"} */
+select
+      'd1vidifjnblb03' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dbt_bparker'
+    union all
+    select
+      'd1vidifjnblb03' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dbt_bparker'
+  
+2022-06-18 21:47:56.199307 (ThreadPoolExecutor-1_0): 21:47:56  SQL status: SELECT 4 in 0.0 seconds
+2022-06-18 21:47:56.200389 (ThreadPoolExecutor-1_0): 21:47:56  On list_d1vidifjnblb03_dbt_bparker: ROLLBACK
+2022-06-18 21:47:56.201532 (ThreadPoolExecutor-1_0): 21:47:56  On list_d1vidifjnblb03_dbt_bparker: Close
+2022-06-18 21:47:56.205706 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.205822 (MainThread): 21:47:56  On master: BEGIN
+2022-06-18 21:47:56.205905 (MainThread): 21:47:56  Opening a new connection, currently in state init
+2022-06-18 21:47:56.220776 (MainThread): 21:47:56  SQL status: BEGIN in 0.01 seconds
+2022-06-18 21:47:56.220888 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.220963 (MainThread): 21:47:56  On master: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+2022-06-18 21:47:56.402785 (MainThread): 21:47:56  SQL status: SELECT 4 in 0.18 seconds
+2022-06-18 21:47:56.404072 (MainThread): 21:47:56  On master: ROLLBACK
+2022-06-18 21:47:56.405262 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.405378 (MainThread): 21:47:56  On master: BEGIN
+2022-06-18 21:47:56.407494 (MainThread): 21:47:56  SQL status: BEGIN in 0.0 seconds
+2022-06-18 21:47:56.407611 (MainThread): 21:47:56  On master: COMMIT
+2022-06-18 21:47:56.407684 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.407752 (MainThread): 21:47:56  On master: COMMIT
+2022-06-18 21:47:56.408888 (MainThread): 21:47:56  SQL status: COMMIT in 0.0 seconds
+2022-06-18 21:47:56.409101 (MainThread): 21:47:56  On master: Close
+2022-06-18 21:47:56.409695 (MainThread): 21:47:56  Concurrency: 4 threads (target='default')
+2022-06-18 21:47:56.409870 (MainThread): 21:47:56  
+2022-06-18 21:47:56.413144 (Thread-1): 21:47:56  Began running node model.tweetdash.fct_periodic_monthly_active_followers
+2022-06-18 21:47:56.413420 (Thread-1): 21:47:56  1 of 12 START view model dbt_bparker.fct_periodic_monthly_active_followers...... [RUN]
+2022-06-18 21:47:56.413681 (Thread-1): 21:47:56  Acquiring new postgres connection "model.tweetdash.fct_periodic_monthly_active_followers"
+2022-06-18 21:47:56.413776 (Thread-1): 21:47:56  Began compiling node model.tweetdash.fct_periodic_monthly_active_followers
+2022-06-18 21:47:56.413868 (Thread-1): 21:47:56  Compiling model.tweetdash.fct_periodic_monthly_active_followers
+2022-06-18 21:47:56.415035 (Thread-1): 21:47:56  Writing injected SQL for node "model.tweetdash.fct_periodic_monthly_active_followers"
+2022-06-18 21:47:56.415272 (Thread-2): 21:47:56  Began running node model.tweetdash.stg_twitter__ timelines
+2022-06-18 21:47:56.415513 (Thread-2): 21:47:56  2 of 12 START view model dbt_bparker.stg_twitter__ timelines.................... [RUN]
+2022-06-18 21:47:56.415920 (Thread-2): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.416012 (Thread-2): 21:47:56  Began compiling node model.tweetdash.stg_twitter__ timelines
+2022-06-18 21:47:56.416096 (Thread-2): 21:47:56  Compiling model.tweetdash.stg_twitter__ timelines
+2022-06-18 21:47:56.418173 (Thread-2): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.418501 (Thread-3): 21:47:56  Began running node model.tweetdash.stg_twitter__likes
+2022-06-18 21:47:56.418723 (Thread-3): 21:47:56  3 of 12 START view model dbt_bparker.stg_twitter__likes......................... [RUN]
+2022-06-18 21:47:56.418979 (Thread-3): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.419063 (Thread-3): 21:47:56  Began compiling node model.tweetdash.stg_twitter__likes
+2022-06-18 21:47:56.419144 (Thread-3): 21:47:56  Compiling model.tweetdash.stg_twitter__likes
+2022-06-18 21:47:56.421303 (Thread-3): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.421643 (Thread-4): 21:47:56  Began running node model.tweetdash.stg_twitter__quotes
+2022-06-18 21:47:56.421865 (Thread-4): 21:47:56  4 of 12 START view model dbt_bparker.stg_twitter__quotes........................ [RUN]
+2022-06-18 21:47:56.422133 (Thread-4): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__quotes"
+2022-06-18 21:47:56.422248 (Thread-4): 21:47:56  Began compiling node model.tweetdash.stg_twitter__quotes
+2022-06-18 21:47:56.422361 (Thread-4): 21:47:56  Compiling model.tweetdash.stg_twitter__quotes
+2022-06-18 21:47:56.424367 (Thread-4): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__quotes"
+2022-06-18 21:47:56.433372 (Thread-2): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.433518 (Thread-2): 21:47:56  Began executing node model.tweetdash.stg_twitter__ timelines
+2022-06-18 21:47:56.438757 (Thread-1): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.438892 (Thread-1): 21:47:56  Began executing node model.tweetdash.fct_periodic_monthly_active_followers
+2022-06-18 21:47:56.443906 (Thread-4): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.444037 (Thread-4): 21:47:56  Began executing node model.tweetdash.stg_twitter__quotes
+2022-06-18 21:47:56.455439 (Thread-3): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.455571 (Thread-3): 21:47:56  Began executing node model.tweetdash.stg_twitter__likes
+2022-06-18 21:47:56.488829 (Thread-2): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.489926 (Thread-4): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__quotes"
+2022-06-18 21:47:56.490879 (Thread-3): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.492014 (Thread-1): 21:47:56  Writing runtime SQL for node "model.tweetdash.fct_periodic_monthly_active_followers"
+2022-06-18 21:47:56.504351 (Thread-1): 21:47:56  Using postgres connection "model.tweetdash.fct_periodic_monthly_active_followers"
+2022-06-18 21:47:56.504477 (Thread-1): 21:47:56  On model.tweetdash.fct_periodic_monthly_active_followers: BEGIN
+2022-06-18 21:47:56.504570 (Thread-1): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.505289 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.505410 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: BEGIN
+2022-06-18 21:47:56.505494 (Thread-3): 21:47:56  Opening a new connection, currently in state init
+2022-06-18 21:47:56.505748 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.505851 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: BEGIN
+2022-06-18 21:47:56.505933 (Thread-2): 21:47:56  Opening a new connection, currently in state init
+2022-06-18 21:47:56.506176 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__quotes"
+2022-06-18 21:47:56.506278 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__quotes: BEGIN
+2022-06-18 21:47:56.506357 (Thread-4): 21:47:56  Opening a new connection, currently in state init
+2022-06-18 21:47:56.539033 (Thread-1): 21:47:56  SQL status: BEGIN in 0.03 seconds
+2022-06-18 21:47:56.539171 (Thread-1): 21:47:56  Using postgres connection "model.tweetdash.fct_periodic_monthly_active_followers"
+2022-06-18 21:47:56.539252 (Thread-1): 21:47:56  On model.tweetdash.fct_periodic_monthly_active_followers: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.fct_periodic_monthly_active_followers"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."fct_periodic_monthly_active_followers__dbt_tmp" as (
+    select 
+    author_user_id,
+    first_day_of_month,
+    count(distinct follower_user_id) as count_active_followers
+from fct_factless_author_follower_month_combos
+  );
+2022-06-18 21:47:56.540263 (Thread-3): 21:47:56  SQL status: BEGIN in 0.03 seconds
+2022-06-18 21:47:56.540401 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.540481 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__likes"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__likes__dbt_tmp" as (
+    select 
+    distinct
+    cast(author_id as varchar) as author_user_id,
+    cast(id as varchar) as follower_user_id,
+    cast(tweet_id as varchar) as tweet_id,
+    cast(tweet_created_at as timestamp) as tweet_created_at,
+    cast(name as varchar) as user_name_readable,
+    
+    1 as count_likes
+from "d1vidifjnblb03"."twitter"."tweets_liked"
+  );
+2022-06-18 21:47:56.541255 (Thread-2): 21:47:56  SQL status: BEGIN in 0.04 seconds
+2022-06-18 21:47:56.541391 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.541469 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__ timelines"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__ timelines__dbt_tmp" as (
+    select 
+    *
+from "d1vidifjnblb03"."twitter"."user_timelines"
+  );
+2022-06-18 21:47:56.541871 (Thread-1): 21:47:56  Postgres adapter: Postgres error: relation "fct_factless_author_follower_month_combos" does not exist
+LINE 8: from fct_factless_author_follower_month_combos
+             ^
+
+2022-06-18 21:47:56.541996 (Thread-1): 21:47:56  On model.tweetdash.fct_periodic_monthly_active_followers: ROLLBACK
+2022-06-18 21:47:56.546157 (Thread-1): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.546314 (Thread-1): 21:47:56  On model.tweetdash.fct_periodic_monthly_active_followers: Close
+2022-06-18 21:47:56.546747 (Thread-1): 21:47:56  Database Error in model fct_periodic_monthly_active_followers (models/marts/fct_periodic_monthly_active_followers.sql)
+  relation "fct_factless_author_follower_month_combos" does not exist
+  LINE 8: from fct_factless_author_follower_month_combos
+               ^
+  compiled SQL at target/run/tweetdash/models/marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:47:56.546950 (Thread-1): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b97c5730>]}
+2022-06-18 21:47:56.547320 (Thread-1): 21:47:56  1 of 12 ERROR creating view model dbt_bparker.fct_periodic_monthly_active_followers [ERROR in 0.13s]
+2022-06-18 21:47:56.547445 (Thread-1): 21:47:56  Finished running node model.tweetdash.fct_periodic_monthly_active_followers
+2022-06-18 21:47:56.547583 (Thread-1): 21:47:56  Began running node model.tweetdash.stg_twitter__replies
+2022-06-18 21:47:56.547766 (Thread-1): 21:47:56  5 of 12 START view model dbt_bparker.stg_twitter__replies....................... [RUN]
+2022-06-18 21:47:56.548000 (Thread-1): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__replies"
+2022-06-18 21:47:56.548084 (Thread-1): 21:47:56  Began compiling node model.tweetdash.stg_twitter__replies
+2022-06-18 21:47:56.548170 (Thread-1): 21:47:56  Compiling model.tweetdash.stg_twitter__replies
+2022-06-18 21:47:56.550671 (Thread-1): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__replies"
+2022-06-18 21:47:56.551071 (Thread-4): 21:47:56  SQL status: BEGIN in 0.04 seconds
+2022-06-18 21:47:56.551183 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__quotes"
+2022-06-18 21:47:56.551259 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__quotes: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__quotes"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__quotes__dbt_tmp" as (
+    select 
+    distinct
+    cast(author_id as varchar) as author_user_id,
+    cast(id as varchar) as follower_user_id,
+    cast(tweet_id as varchar) as tweet_id,
+    cast(tweet_created_at as timestamp) as tweet_created_at,
+    cast(name as varchar) as user_name_readable,
+    
+    1 as count_quotes
+from "d1vidifjnblb03"."twitter"."tweets_quoted"
+  );
+2022-06-18 21:47:56.551861 (Thread-3): 21:47:56  SQL status: CREATE VIEW in 0.01 seconds
+2022-06-18 21:47:56.557214 (Thread-4): 21:47:56  Postgres adapter: Postgres error: column "name" does not exist
+LINE 10:     cast(name as varchar) as user_name_readable,
+                  ^
+
+2022-06-18 21:47:56.557327 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__quotes: ROLLBACK
+2022-06-18 21:47:56.558274 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.558375 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__likes"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__likes" rename to "stg_twitter__likes__dbt_backup"
+2022-06-18 21:47:56.558613 (Thread-2): 21:47:56  SQL status: CREATE VIEW in 0.02 seconds
+2022-06-18 21:47:56.561341 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.561437 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__ timelines"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__ timelines" rename to "stg_twitter__ timelines__dbt_backup"
+2022-06-18 21:47:56.561724 (Thread-4): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.561860 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__quotes: Close
+2022-06-18 21:47:56.562255 (Thread-4): 21:47:56  Database Error in model stg_twitter__quotes (models/staging/twitter/stg_twitter__quotes.sql)
+  column "name" does not exist
+  LINE 10:     cast(name as varchar) as user_name_readable,
+                    ^
+  compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:47:56.562414 (Thread-4): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5e08ada60>]}
+2022-06-18 21:47:56.562678 (Thread-4): 21:47:56  4 of 12 ERROR creating view model dbt_bparker.stg_twitter__quotes............... [ERROR in 0.14s]
+2022-06-18 21:47:56.562778 (Thread-4): 21:47:56  Finished running node model.tweetdash.stg_twitter__quotes
+2022-06-18 21:47:56.562900 (Thread-4): 21:47:56  Began running node model.tweetdash.stg_twitter__retweets
+2022-06-18 21:47:56.563061 (Thread-4): 21:47:56  6 of 12 START view model dbt_bparker.stg_twitter__retweets...................... [RUN]
+2022-06-18 21:47:56.563272 (Thread-4): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.563356 (Thread-4): 21:47:56  Began compiling node model.tweetdash.stg_twitter__retweets
+2022-06-18 21:47:56.563492 (Thread-4): 21:47:56  Compiling model.tweetdash.stg_twitter__retweets
+2022-06-18 21:47:56.565448 (Thread-4): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.566302 (Thread-3): 21:47:56  SQL status: ALTER TABLE in 0.01 seconds
+2022-06-18 21:47:56.568145 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.568242 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__likes"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__likes__dbt_tmp" rename to "stg_twitter__likes"
+2022-06-18 21:47:56.568437 (Thread-2): 21:47:56  SQL status: ALTER TABLE in 0.01 seconds
+2022-06-18 21:47:56.570082 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.570178 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__ timelines"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__ timelines__dbt_tmp" rename to "stg_twitter__ timelines"
+2022-06-18 21:47:56.570478 (Thread-1): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.570628 (Thread-1): 21:47:56  Began executing node model.tweetdash.stg_twitter__replies
+2022-06-18 21:47:56.572397 (Thread-1): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__replies"
+2022-06-18 21:47:56.572657 (Thread-2): 21:47:56  SQL status: ALTER TABLE in 0.0 seconds
+2022-06-18 21:47:56.578237 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: COMMIT
+2022-06-18 21:47:56.578339 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.578413 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: COMMIT
+2022-06-18 21:47:56.578555 (Thread-3): 21:47:56  SQL status: ALTER TABLE in 0.01 seconds
+2022-06-18 21:47:56.579488 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: COMMIT
+2022-06-18 21:47:56.579585 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.579658 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: COMMIT
+2022-06-18 21:47:56.583022 (Thread-2): 21:47:56  SQL status: COMMIT in 0.0 seconds
+2022-06-18 21:47:56.587062 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__ timelines"
+2022-06-18 21:47:56.587160 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__ timelines"} */
+drop view if exists "d1vidifjnblb03"."dbt_bparker"."stg_twitter__ timelines__dbt_backup" cascade
+2022-06-18 21:47:56.587394 (Thread-4): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.587524 (Thread-4): 21:47:56  Began executing node model.tweetdash.stg_twitter__retweets
+2022-06-18 21:47:56.589303 (Thread-4): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.589531 (Thread-3): 21:47:56  SQL status: COMMIT in 0.01 seconds
+2022-06-18 21:47:56.590780 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__likes"
+2022-06-18 21:47:56.590878 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__likes"} */
+drop view if exists "d1vidifjnblb03"."dbt_bparker"."stg_twitter__likes__dbt_backup" cascade
+2022-06-18 21:47:56.591822 (Thread-2): 21:47:56  SQL status: DROP VIEW in 0.0 seconds
+2022-06-18 21:47:56.592724 (Thread-2): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.592852 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__ timelines: Close
+2022-06-18 21:47:56.593237 (Thread-2): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b97d2bb0>]}
+2022-06-18 21:47:56.593527 (Thread-2): 21:47:56  2 of 12 OK created view model dbt_bparker.stg_twitter__ timelines............... [CREATE VIEW in 0.18s]
+2022-06-18 21:47:56.593632 (Thread-2): 21:47:56  Finished running node model.tweetdash.stg_twitter__ timelines
+2022-06-18 21:47:56.593764 (Thread-2): 21:47:56  Began running node model.tweetdash.stg_twitter__users
+2022-06-18 21:47:56.593929 (Thread-2): 21:47:56  7 of 12 START view model dbt_bparker.stg_twitter__users......................... [RUN]
+2022-06-18 21:47:56.594139 (Thread-2): 21:47:56  Acquiring new postgres connection "model.tweetdash.stg_twitter__users"
+2022-06-18 21:47:56.594225 (Thread-2): 21:47:56  Began compiling node model.tweetdash.stg_twitter__users
+2022-06-18 21:47:56.594306 (Thread-2): 21:47:56  Compiling model.tweetdash.stg_twitter__users
+2022-06-18 21:47:56.596078 (Thread-2): 21:47:56  Writing injected SQL for node "model.tweetdash.stg_twitter__users"
+2022-06-18 21:47:56.596785 (Thread-3): 21:47:56  SQL status: DROP VIEW in 0.01 seconds
+2022-06-18 21:47:56.597673 (Thread-3): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.597797 (Thread-3): 21:47:56  On model.tweetdash.stg_twitter__likes: Close
+2022-06-18 21:47:56.598073 (Thread-1): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__replies"
+2022-06-18 21:47:56.598180 (Thread-1): 21:47:56  On model.tweetdash.stg_twitter__replies: BEGIN
+2022-06-18 21:47:56.598264 (Thread-1): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.598712 (Thread-3): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b97c5f70>]}
+2022-06-18 21:47:56.598993 (Thread-3): 21:47:56  3 of 12 OK created view model dbt_bparker.stg_twitter__likes.................... [CREATE VIEW in 0.18s]
+2022-06-18 21:47:56.599096 (Thread-3): 21:47:56  Finished running node model.tweetdash.stg_twitter__likes
+2022-06-18 21:47:56.599424 (Thread-3): 21:47:56  Began running node model.tweetdash.dim_tweets
+2022-06-18 21:47:56.599598 (Thread-3): 21:47:56  8 of 12 START view model dbt_bparker.dim_tweets................................. [RUN]
+2022-06-18 21:47:56.599805 (Thread-3): 21:47:56  Acquiring new postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.599912 (Thread-3): 21:47:56  Began compiling node model.tweetdash.dim_tweets
+2022-06-18 21:47:56.600001 (Thread-3): 21:47:56  Compiling model.tweetdash.dim_tweets
+2022-06-18 21:47:56.601863 (Thread-3): 21:47:56  Writing injected SQL for node "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.606209 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.606319 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: BEGIN
+2022-06-18 21:47:56.606401 (Thread-4): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.608078 (Thread-2): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.608212 (Thread-2): 21:47:56  Began executing node model.tweetdash.stg_twitter__users
+2022-06-18 21:47:56.609889 (Thread-2): 21:47:56  Writing runtime SQL for node "model.tweetdash.stg_twitter__users"
+2022-06-18 21:47:56.611962 (Thread-3): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.612103 (Thread-3): 21:47:56  Began executing node model.tweetdash.dim_tweets
+2022-06-18 21:47:56.613844 (Thread-3): 21:47:56  Writing runtime SQL for node "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.616034 (Thread-1): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.616154 (Thread-1): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__replies"
+2022-06-18 21:47:56.616235 (Thread-1): 21:47:56  On model.tweetdash.stg_twitter__replies: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__replies"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__replies__dbt_tmp" as (
+    select 
+    distinct
+    cast(author_id as varchar) as author_user_id,
+    cast(id as varchar) as follower_user_id,
+    cast(tweet_id as varchar) as tweet_id,
+    cast(tweet_created_at as timestamp) as tweet_created_at,
+    cast(name as varchar) as user_name_readable,
+    
+    1 as count_replies
+from "d1vidifjnblb03"."twitter"."tweets_replied_to"
+  );
+2022-06-18 21:47:56.619516 (Thread-1): 21:47:56  Postgres adapter: Postgres error: column "name" does not exist
+LINE 10:     cast(name as varchar) as user_name_readable,
+                  ^
+
+2022-06-18 21:47:56.619633 (Thread-1): 21:47:56  On model.tweetdash.stg_twitter__replies: ROLLBACK
+2022-06-18 21:47:56.620538 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__users"
+2022-06-18 21:47:56.620652 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__users: BEGIN
+2022-06-18 21:47:56.620768 (Thread-2): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.621031 (Thread-1): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.621167 (Thread-1): 21:47:56  On model.tweetdash.stg_twitter__replies: Close
+2022-06-18 21:47:56.621641 (Thread-1): 21:47:56  Database Error in model stg_twitter__replies (models/staging/twitter/stg_twitter__replies.sql)
+  column "name" does not exist
+  LINE 10:     cast(name as varchar) as user_name_readable,
+                    ^
+  compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:47:56.621819 (Thread-1): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b9770a90>]}
+2022-06-18 21:47:56.622089 (Thread-1): 21:47:56  5 of 12 ERROR creating view model dbt_bparker.stg_twitter__replies.............. [ERROR in 0.07s]
+2022-06-18 21:47:56.622198 (Thread-1): 21:47:56  Finished running node model.tweetdash.stg_twitter__replies
+2022-06-18 21:47:56.624869 (Thread-4): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.624988 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.625066 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__retweets"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__retweets__dbt_tmp" as (
+    select 
+    distinct
+    cast(author_id as varchar) as author_user_id,
+    cast(id as varchar) as follower_user_id,
+    cast(tweet_id as varchar) as tweet_id,
+    cast(tweet_created_at as timestamp) as tweet_created_at,
+    cast(name as varchar) as user_name_readable,
+    
+    1 as count_retweets
+from "d1vidifjnblb03"."twitter"."tweets_retweeted"
+  );
+2022-06-18 21:47:56.626966 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.627082 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: BEGIN
+2022-06-18 21:47:56.627162 (Thread-3): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.631661 (Thread-4): 21:47:56  SQL status: CREATE VIEW in 0.01 seconds
+2022-06-18 21:47:56.633730 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.633829 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__retweets"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__retweets" rename to "stg_twitter__retweets__dbt_backup"
+2022-06-18 21:47:56.635844 (Thread-4): 21:47:56  SQL status: ALTER TABLE in 0.0 seconds
+2022-06-18 21:47:56.637596 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.637690 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__retweets"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."stg_twitter__retweets__dbt_tmp" rename to "stg_twitter__retweets"
+2022-06-18 21:47:56.639223 (Thread-4): 21:47:56  SQL status: ALTER TABLE in 0.0 seconds
+2022-06-18 21:47:56.640153 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: COMMIT
+2022-06-18 21:47:56.640247 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.640331 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: COMMIT
+2022-06-18 21:47:56.643526 (Thread-2): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.643648 (Thread-2): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__users"
+2022-06-18 21:47:56.643726 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__users: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__users"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."stg_twitter__users__dbt_tmp" as (
+    select 
+    distinct
+    cast(id as varchar) as user_id,
+    cast(name as varchar) as user_name_readable,
+    cast(username as varchar) as user_name,
+    cast(description as varchar) as description,
+    cast(public_metrics as varchar) as public_metrics,
+    cast(url as varchar) as url,
+    cast(location as varchar) as location,
+from "d1vidifjnblb03"."twitter"."user_meta_data"
+  );
+2022-06-18 21:47:56.644248 (Thread-4): 21:47:56  SQL status: COMMIT in 0.0 seconds
+2022-06-18 21:47:56.646745 (Thread-4): 21:47:56  Using postgres connection "model.tweetdash.stg_twitter__retweets"
+2022-06-18 21:47:56.646841 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.stg_twitter__retweets"} */
+drop view if exists "d1vidifjnblb03"."dbt_bparker"."stg_twitter__retweets__dbt_backup" cascade
+2022-06-18 21:47:56.647098 (Thread-2): 21:47:56  Postgres adapter: Postgres error: syntax error at or near "from"
+LINE 13: from "d1vidifjnblb03"."twitter"."user_meta_data"
+         ^
+
+2022-06-18 21:47:56.647202 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__users: ROLLBACK
+2022-06-18 21:47:56.648634 (Thread-2): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.648793 (Thread-2): 21:47:56  On model.tweetdash.stg_twitter__users: Close
+2022-06-18 21:47:56.649155 (Thread-2): 21:47:56  Database Error in model stg_twitter__users (models/staging/twitter/stg_twitter__users.sql)
+  syntax error at or near "from"
+  LINE 13: from "d1vidifjnblb03"."twitter"."user_meta_data"
+           ^
+  compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__users.sql
+2022-06-18 21:47:56.649333 (Thread-2): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b974ed30>]}
+2022-06-18 21:47:56.649607 (Thread-2): 21:47:56  7 of 12 ERROR creating view model dbt_bparker.stg_twitter__users................ [ERROR in 0.06s]
+2022-06-18 21:47:56.649709 (Thread-2): 21:47:56  Finished running node model.tweetdash.stg_twitter__users
+2022-06-18 21:47:56.649964 (Thread-3): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.650076 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.650154 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.dim_tweets"} */
+
+  create view "d1vidifjnblb03"."dbt_bparker"."dim_tweets__dbt_tmp" as (
+    select * from 
+"d1vidifjnblb03"."dbt_bparker"."stg_twitter__ timelines"
+  );
+2022-06-18 21:47:56.650460 (Thread-4): 21:47:56  SQL status: DROP VIEW in 0.0 seconds
+2022-06-18 21:47:56.651302 (Thread-4): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.651425 (Thread-4): 21:47:56  On model.tweetdash.stg_twitter__retweets: Close
+2022-06-18 21:47:56.651728 (Thread-1): 21:47:56  Began running node model.tweetdash.dim_users
+2022-06-18 21:47:56.651883 (Thread-1): 21:47:56  9 of 12 SKIP relation dbt_bparker.dim_users..................................... [SKIP]
+2022-06-18 21:47:56.651984 (Thread-1): 21:47:56  Finished running node model.tweetdash.dim_users
+2022-06-18 21:47:56.652379 (Thread-4): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5b974fd30>]}
+2022-06-18 21:47:56.652693 (Thread-4): 21:47:56  6 of 12 OK created view model dbt_bparker.stg_twitter__retweets................. [CREATE VIEW in 0.09s]
+2022-06-18 21:47:56.652804 (Thread-4): 21:47:56  Finished running node model.tweetdash.stg_twitter__retweets
+2022-06-18 21:47:56.653646 (Thread-1): 21:47:56  Began running node model.tweetdash.int_author_follower_combos_per_tweet
+2022-06-18 21:47:56.653794 (Thread-1): 21:47:56  10 of 12 SKIP relation dbt_bparker.int_author_follower_combos_per_tweet......... [SKIP]
+2022-06-18 21:47:56.653903 (Thread-1): 21:47:56  Finished running node model.tweetdash.int_author_follower_combos_per_tweet
+2022-06-18 21:47:56.654341 (Thread-2): 21:47:56  Began running node model.tweetdash.fct_transaction_interactions_per_tweet_and_follower
+2022-06-18 21:47:56.654486 (Thread-2): 21:47:56  11 of 12 SKIP relation dbt_bparker.fct_transaction_interactions_per_tweet_and_follower [SKIP]
+2022-06-18 21:47:56.654580 (Thread-2): 21:47:56  Finished running node model.tweetdash.fct_transaction_interactions_per_tweet_and_follower
+2022-06-18 21:47:56.655058 (Thread-4): 21:47:56  Began running node model.tweetdash.fct_factless_follower_attribution
+2022-06-18 21:47:56.655201 (Thread-4): 21:47:56  12 of 12 SKIP relation dbt_bparker.fct_factless_follower_attribution............ [SKIP]
+2022-06-18 21:47:56.655295 (Thread-4): 21:47:56  Finished running node model.tweetdash.fct_factless_follower_attribution
+2022-06-18 21:47:56.656490 (Thread-3): 21:47:56  SQL status: CREATE VIEW in 0.01 seconds
+2022-06-18 21:47:56.658214 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.658310 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.dim_tweets"} */
+alter table "d1vidifjnblb03"."dbt_bparker"."dim_tweets__dbt_tmp" rename to "dim_tweets"
+2022-06-18 21:47:56.659961 (Thread-3): 21:47:56  SQL status: ALTER TABLE in 0.0 seconds
+2022-06-18 21:47:56.660885 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: COMMIT
+2022-06-18 21:47:56.660980 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.661053 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: COMMIT
+2022-06-18 21:47:56.663954 (Thread-3): 21:47:56  SQL status: COMMIT in 0.0 seconds
+2022-06-18 21:47:56.665175 (Thread-3): 21:47:56  Using postgres connection "model.tweetdash.dim_tweets"
+2022-06-18 21:47:56.665271 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: /* {"app": "dbt", "dbt_version": "1.0.8", "profile_name": "user", "target_name": "default", "node_id": "model.tweetdash.dim_tweets"} */
+drop view if exists "d1vidifjnblb03"."dbt_bparker"."dim_tweets__dbt_backup" cascade
+2022-06-18 21:47:56.667343 (Thread-3): 21:47:56  SQL status: DROP VIEW in 0.0 seconds
+2022-06-18 21:47:56.668158 (Thread-3): 21:47:56  finished collecting timing info
+2022-06-18 21:47:56.668292 (Thread-3): 21:47:56  On model.tweetdash.dim_tweets: Close
+2022-06-18 21:47:56.668685 (Thread-3): 21:47:56  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '74bc6d94-cd0e-48b7-83b0-8ad9a64c8eb9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa5e0895e50>]}
+2022-06-18 21:47:56.668961 (Thread-3): 21:47:56  8 of 12 OK created view model dbt_bparker.dim_tweets............................ [CREATE VIEW in 0.07s]
+2022-06-18 21:47:56.669062 (Thread-3): 21:47:56  Finished running node model.tweetdash.dim_tweets
+2022-06-18 21:47:56.670441 (MainThread): 21:47:56  Acquiring new postgres connection "master"
+2022-06-18 21:47:56.670582 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.670660 (MainThread): 21:47:56  On master: BEGIN
+2022-06-18 21:47:56.670737 (MainThread): 21:47:56  Opening a new connection, currently in state closed
+2022-06-18 21:47:56.686559 (MainThread): 21:47:56  SQL status: BEGIN in 0.02 seconds
+2022-06-18 21:47:56.686677 (MainThread): 21:47:56  On master: COMMIT
+2022-06-18 21:47:56.686755 (MainThread): 21:47:56  Using postgres connection "master"
+2022-06-18 21:47:56.686826 (MainThread): 21:47:56  On master: COMMIT
+2022-06-18 21:47:56.687846 (MainThread): 21:47:56  SQL status: COMMIT in 0.0 seconds
+2022-06-18 21:47:56.687950 (MainThread): 21:47:56  On master: Close
+2022-06-18 21:47:56.688323 (MainThread): 21:47:56  
+2022-06-18 21:47:56.688436 (MainThread): 21:47:56  Finished running 12 view models in 0.56s.
+2022-06-18 21:47:56.688517 (MainThread): 21:47:56  Connection 'master' was properly closed.
+2022-06-18 21:47:56.688583 (MainThread): 21:47:56  Connection 'model.tweetdash.stg_twitter__replies' was properly closed.
+2022-06-18 21:47:56.688646 (MainThread): 21:47:56  Connection 'model.tweetdash.stg_twitter__users' was properly closed.
+2022-06-18 21:47:56.688743 (MainThread): 21:47:56  Connection 'model.tweetdash.dim_tweets' was properly closed.
+2022-06-18 21:47:56.688805 (MainThread): 21:47:56  Connection 'model.tweetdash.stg_twitter__retweets' was properly closed.
+2022-06-18 21:47:56.751345 (MainThread): 21:47:56  
+2022-06-18 21:47:56.751570 (MainThread): 21:47:56  Completed with 4 errors and 0 warnings:
+2022-06-18 21:47:56.751662 (MainThread): 21:47:56  
+2022-06-18 21:47:56.751753 (MainThread): 21:47:56  Database Error in model fct_periodic_monthly_active_followers (models/marts/fct_periodic_monthly_active_followers.sql)
+2022-06-18 21:47:56.751830 (MainThread): 21:47:56    relation "fct_factless_author_follower_month_combos" does not exist
+2022-06-18 21:47:56.751899 (MainThread): 21:47:56    LINE 8: from fct_factless_author_follower_month_combos
+2022-06-18 21:47:56.751967 (MainThread): 21:47:56                 ^
+2022-06-18 21:47:56.752032 (MainThread): 21:47:56    compiled SQL at target/run/tweetdash/models/marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:47:56.752100 (MainThread): 21:47:56  
+2022-06-18 21:47:56.752175 (MainThread): 21:47:56  Database Error in model stg_twitter__quotes (models/staging/twitter/stg_twitter__quotes.sql)
+2022-06-18 21:47:56.752242 (MainThread): 21:47:56    column "name" does not exist
+2022-06-18 21:47:56.752316 (MainThread): 21:47:56    LINE 10:     cast(name as varchar) as user_name_readable,
+2022-06-18 21:47:56.752380 (MainThread): 21:47:56                      ^
+2022-06-18 21:47:56.752441 (MainThread): 21:47:56    compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:47:56.752508 (MainThread): 21:47:56  
+2022-06-18 21:47:56.752579 (MainThread): 21:47:56  Database Error in model stg_twitter__replies (models/staging/twitter/stg_twitter__replies.sql)
+2022-06-18 21:47:56.752644 (MainThread): 21:47:56    column "name" does not exist
+2022-06-18 21:47:56.752736 (MainThread): 21:47:56    LINE 10:     cast(name as varchar) as user_name_readable,
+2022-06-18 21:47:56.752800 (MainThread): 21:47:56                      ^
+2022-06-18 21:47:56.752862 (MainThread): 21:47:56    compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:47:56.752930 (MainThread): 21:47:56  
+2022-06-18 21:47:56.753003 (MainThread): 21:47:56  Database Error in model stg_twitter__users (models/staging/twitter/stg_twitter__users.sql)
+2022-06-18 21:47:56.753069 (MainThread): 21:47:56    syntax error at or near "from"
+2022-06-18 21:47:56.753132 (MainThread): 21:47:56    LINE 13: from "d1vidifjnblb03"."twitter"."user_meta_data"
+2022-06-18 21:47:56.753194 (MainThread): 21:47:56             ^
+2022-06-18 21:47:56.753254 (MainThread): 21:47:56    compiled SQL at target/run/tweetdash/models/staging/twitter/stg_twitter__users.sql
+2022-06-18 21:47:56.753337 (MainThread): 21:47:56  
+2022-06-18 21:47:56.753415 (MainThread): 21:47:56  Done. PASS=4 WARN=0 ERROR=4 SKIP=4 TOTAL=12
+2022-06-18 21:47:56.915217 (Thread-128): handling poll request
+2022-06-18 21:47:56.915623 (Thread-128): 21:47:56  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24ccf1e20>]}
+2022-06-18 21:47:56.920491 (Thread-128): sending response (<Response 175748 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:57.493994 (Thread-129): handling status request
+2022-06-18 21:47:57.494402 (Thread-129): 21:47:57  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24ccf1f40>]}
+2022-06-18 21:47:57.495364 (Thread-129): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:47:57.514433 (Thread-130): handling status request
+2022-06-18 21:47:57.514830 (Thread-130): 21:47:57  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24ccfa1c0>]}
+2022-06-18 21:47:57.515711 (Thread-130): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:29.213571 (Thread-131): 21:48:29  Unable to do partial parsing because config vars, config profile, or config target have changed
+2022-06-18 21:48:29.213939 (Thread-131): 21:48:29  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd3d7f0>]}
+2022-06-18 21:48:29.259337 (Thread-131): 21:48:29  Parsing macros/relations.sql
+2022-06-18 21:48:29.261154 (Thread-131): 21:48:29  Parsing macros/adapters.sql
+2022-06-18 21:48:29.282906 (Thread-131): 21:48:29  Parsing macros/catalog.sql
+2022-06-18 21:48:29.285173 (Thread-131): 21:48:29  Parsing macros/materializations/snapshot_merge.sql
+2022-06-18 21:48:29.286810 (Thread-131): 21:48:29  Parsing macros/adapters/metadata.sql
+2022-06-18 21:48:29.294169 (Thread-131): 21:48:29  Parsing macros/adapters/columns.sql
+2022-06-18 21:48:29.303706 (Thread-131): 21:48:29  Parsing macros/adapters/freshness.sql
+2022-06-18 21:48:29.306824 (Thread-131): 21:48:29  Parsing macros/adapters/persist_docs.sql
+2022-06-18 21:48:29.311434 (Thread-131): 21:48:29  Parsing macros/adapters/relation.sql
+2022-06-18 21:48:29.320745 (Thread-131): 21:48:29  Parsing macros/adapters/schema.sql
+2022-06-18 21:48:29.322957 (Thread-131): 21:48:29  Parsing macros/adapters/indexes.sql
+2022-06-18 21:48:29.325861 (Thread-131): 21:48:29  Parsing macros/get_custom_name/get_custom_schema.sql
+2022-06-18 21:48:29.328327 (Thread-131): 21:48:29  Parsing macros/get_custom_name/get_custom_alias.sql
+2022-06-18 21:48:29.329901 (Thread-131): 21:48:29  Parsing macros/get_custom_name/get_custom_database.sql
+2022-06-18 21:48:29.331493 (Thread-131): 21:48:29  Parsing macros/etc/datetime.sql
+2022-06-18 21:48:29.339723 (Thread-131): 21:48:29  Parsing macros/etc/statement.sql
+2022-06-18 21:48:29.344151 (Thread-131): 21:48:29  Parsing macros/generic_test_sql/unique.sql
+2022-06-18 21:48:29.344934 (Thread-131): 21:48:29  Parsing macros/generic_test_sql/not_null.sql
+2022-06-18 21:48:29.345508 (Thread-131): 21:48:29  Parsing macros/generic_test_sql/accepted_values.sql
+2022-06-18 21:48:29.346861 (Thread-131): 21:48:29  Parsing macros/generic_test_sql/relationships.sql
+2022-06-18 21:48:29.347733 (Thread-131): 21:48:29  Parsing macros/materializations/configs.sql
+2022-06-18 21:48:29.350051 (Thread-131): 21:48:29  Parsing macros/materializations/hooks.sql
+2022-06-18 21:48:29.353837 (Thread-131): 21:48:29  Parsing macros/materializations/models/table/table.sql
+2022-06-18 21:48:29.361238 (Thread-131): 21:48:29  Parsing macros/materializations/models/table/create_table_as.sql
+2022-06-18 21:48:29.364017 (Thread-131): 21:48:29  Parsing macros/materializations/models/view/create_or_replace_view.sql
+2022-06-18 21:48:29.366630 (Thread-131): 21:48:29  Parsing macros/materializations/models/view/helpers.sql
+2022-06-18 21:48:29.367915 (Thread-131): 21:48:29  Parsing macros/materializations/models/view/create_view_as.sql
+2022-06-18 21:48:29.370178 (Thread-131): 21:48:29  Parsing macros/materializations/models/view/view.sql
+2022-06-18 21:48:29.377064 (Thread-131): 21:48:29  Parsing macros/materializations/models/incremental/incremental.sql
+2022-06-18 21:48:29.387073 (Thread-131): 21:48:29  Parsing macros/materializations/models/incremental/on_schema_change.sql
+2022-06-18 21:48:29.402302 (Thread-131): 21:48:29  Parsing macros/materializations/models/incremental/is_incremental.sql
+2022-06-18 21:48:29.403833 (Thread-131): 21:48:29  Parsing macros/materializations/models/incremental/merge.sql
+2022-06-18 21:48:29.414702 (Thread-131): 21:48:29  Parsing macros/materializations/models/incremental/column_helpers.sql
+2022-06-18 21:48:29.419016 (Thread-131): 21:48:29  Parsing macros/materializations/seeds/helpers.sql
+2022-06-18 21:48:29.434753 (Thread-131): 21:48:29  Parsing macros/materializations/seeds/seed.sql
+2022-06-18 21:48:29.440558 (Thread-131): 21:48:29  Parsing macros/materializations/tests/helpers.sql
+2022-06-18 21:48:29.442321 (Thread-131): 21:48:29  Parsing macros/materializations/tests/test.sql
+2022-06-18 21:48:29.446593 (Thread-131): 21:48:29  Parsing macros/materializations/tests/where_subquery.sql
+2022-06-18 21:48:29.448368 (Thread-131): 21:48:29  Parsing macros/materializations/snapshots/helpers.sql
+2022-06-18 21:48:29.459315 (Thread-131): 21:48:29  Parsing macros/materializations/snapshots/strategies.sql
+2022-06-18 21:48:29.475471 (Thread-131): 21:48:29  Parsing macros/materializations/snapshots/snapshot_merge.sql
+2022-06-18 21:48:29.477152 (Thread-131): 21:48:29  Parsing macros/materializations/snapshots/snapshot.sql
+2022-06-18 21:48:29.488659 (Thread-131): 21:48:29  Parsing tests/generic/builtin.sql
+2022-06-18 21:48:29.651997 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:48:29.654519 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:48:29.655119 (Thread-132): handling status request
+2022-06-18 21:48:29.657097 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__ timelines.sql
+2022-06-18 21:48:29.657483 (Thread-132): 21:48:29  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cce4d30>]}
+2022-06-18 21:48:29.659348 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__users.sql
+2022-06-18 21:48:29.659864 (Thread-132): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:29.661990 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:48:29.664204 (Thread-131): 21:48:29  1699: static parser successfully parsed staging/twitter/stg_twitter__retweets.sql
+2022-06-18 21:48:29.666481 (Thread-131): 21:48:29  1699: static parser successfully parsed intermediate/int_author_follower_combos_per_tweet.sql
+2022-06-18 21:48:29.668606 (Thread-131): 21:48:29  1699: static parser successfully parsed marts/fct_factless_follower_attribution.sql
+2022-06-18 21:48:29.670522 (Thread-131): 21:48:29  1699: static parser successfully parsed marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:48:29.672527 (Thread-131): 21:48:29  1699: static parser successfully parsed marts/dim_users.sql
+2022-06-18 21:48:29.674365 (Thread-131): 21:48:29  1699: static parser successfully parsed marts/dim_tweets.sql
+2022-06-18 21:48:29.676735 (Thread-131): 21:48:29  1699: static parser successfully parsed marts/fct_transaction_interactions_per_tweet_and_follower.sql
+2022-06-18 21:48:29.703957 (Thread-133): handling status request
+2022-06-18 21:48:29.704352 (Thread-133): 21:48:29  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cccf8b0>]}
+2022-06-18 21:48:29.704816 (Thread-133): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:29.734187 (Thread-131): 21:48:29  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:29.739633 (Thread-131): 21:48:29  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cc7ff10>]}
+2022-06-18 21:48:30.867675 (Thread-134): handling status request
+2022-06-18 21:48:30.868132 (Thread-134): 21:48:30  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cd3f190>]}
+2022-06-18 21:48:30.869125 (Thread-134): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:30.893024 (Thread-135): handling status request
+2022-06-18 21:48:30.893441 (Thread-135): 21:48:30  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd26c0dbc70>]}
+2022-06-18 21:48:30.894284 (Thread-135): sending response (<Response 18257 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:32.514685 (Thread-136): 21:48:32  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+2022-06-18 21:48:32.515150 (Thread-136): 21:48:32  Partial parsing: updated file: tweetdash://models/staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:48:32.518815 (Thread-136): 21:48:32  1699: static parser successfully parsed staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:48:32.560940 (Thread-136): 21:48:32  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:32.568531 (Thread-136): 21:48:32  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cbdd5e0>]}
+2022-06-18 21:48:32.909454 (Thread-137): handling status request
+2022-06-18 21:48:32.909864 (Thread-137): 21:48:32  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cc05a30>]}
+2022-06-18 21:48:32.910360 (Thread-137): sending response (<Response 2099 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:33.001557 (Thread-138): handling status request
+2022-06-18 21:48:33.001969 (Thread-138): 21:48:33  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cc05850>]}
+2022-06-18 21:48:33.002463 (Thread-138): sending response (<Response 2099 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:34.413381 (Thread-139): 21:48:34  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+2022-06-18 21:48:34.413788 (Thread-139): 21:48:34  Partial parsing: updated file: tweetdash://models/staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:48:34.417250 (Thread-139): 21:48:34  1699: static parser successfully parsed staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:48:34.456070 (Thread-139): 21:48:34  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:34.461439 (Thread-139): 21:48:34  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb6f6a0>]}
+2022-06-18 21:48:34.816116 (Thread-140): handling status request
+2022-06-18 21:48:34.816537 (Thread-140): 21:48:34  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cc8b6a0>]}
+2022-06-18 21:48:34.817086 (Thread-140): sending response (<Response 2097 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:34.864776 (Thread-141): handling status request
+2022-06-18 21:48:34.865153 (Thread-141): 21:48:34  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cc8b040>]}
+2022-06-18 21:48:34.865627 (Thread-141): sending response (<Response 2097 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:36.610493 (Thread-142): 21:48:36  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+2022-06-18 21:48:36.610904 (Thread-142): 21:48:36  Partial parsing: updated file: tweetdash://models/staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:48:36.614472 (Thread-142): 21:48:36  1699: static parser successfully parsed staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:48:36.651841 (Thread-142): 21:48:36  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:36.657204 (Thread-142): 21:48:36  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb2c8e0>]}
+2022-06-18 21:48:37.026208 (Thread-143): handling status request
+2022-06-18 21:48:37.026630 (Thread-143): 21:48:37  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb43550>]}
+2022-06-18 21:48:37.027137 (Thread-143): sending response (<Response 2095 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:37.048656 (Thread-144): handling status request
+2022-06-18 21:48:37.049079 (Thread-144): 21:48:37  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb43370>]}
+2022-06-18 21:48:37.049563 (Thread-144): sending response (<Response 2095 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:40.731496 (Thread-145): 21:48:40  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2022-06-18 21:48:40.731730 (Thread-145): 21:48:40  Partial parsing enabled, no changes found, skipping parsing
+2022-06-18 21:48:40.732327 (Thread-145): 21:48:40  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:40.737718 (Thread-145): 21:48:40  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24ca8db50>]}
+2022-06-18 21:48:41.136287 (Thread-146): handling status request
+2022-06-18 21:48:41.136767 (Thread-146): 21:48:41  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb1f9d0>]}
+2022-06-18 21:48:41.137280 (Thread-146): sending response (<Response 1746 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:41.283490 (Thread-147): handling status request
+2022-06-18 21:48:41.283948 (Thread-147): 21:48:41  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb1f790>]}
+2022-06-18 21:48:41.284460 (Thread-147): sending response (<Response 1746 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:44.639034 (Thread-148): 21:48:44  Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+2022-06-18 21:48:44.639259 (Thread-148): 21:48:44  Partial parsing enabled, no changes found, skipping parsing
+2022-06-18 21:48:44.639853 (Thread-148): 21:48:44  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:48:44.645301 (Thread-148): 21:48:44  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cbb3d90>]}
+2022-06-18 21:48:44.902155 (Thread-149): handling status request
+2022-06-18 21:48:44.902574 (Thread-149): 21:48:44  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb551f0>]}
+2022-06-18 21:48:44.903077 (Thread-149): sending response (<Response 1746 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:44.918108 (Thread-150): handling status request
+2022-06-18 21:48:44.918413 (Thread-150): 21:48:44  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cbb03a0>]}
+2022-06-18 21:48:44.918843 (Thread-150): sending response (<Response 1746 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:48:53.802083 (Thread-151): handling status request
+2022-06-18 21:48:53.802495 (Thread-151): 21:48:53  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd24cb389d0>]}
+2022-06-18 21:48:53.824091 (Thread-151): sending response (<Response 1746 bytes [200 OK]>) to 10.0.28.122

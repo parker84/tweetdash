@@ -12,7 +12,7 @@ st.set_page_config(
 st.title("🚀 Twitter Status Dashboard")
 st.sidebar.title("🦅 TweetDash")
 
-user_name = st.text_input("Enter Your User Name", "@elonmusk")
+user_name = st.text_input("Enter Your User Name", "@parker_brydon")
 user_name = user_name.strip('@')
 
 start_date = st.sidebar.date_input(label='Start date', value=date(2022, 6, 1))

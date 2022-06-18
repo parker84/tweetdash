@@ -4880,3 +4880,81 @@ drop view if exists "d1vidifjnblb03"."dbt_bparker"."stg_twitter__likes__dbt_back
 2022-06-18 21:38:43.760517 (Thread-71): handling status request
 2022-06-18 21:38:43.762017 (Thread-71): 21:38:43  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd29c04d070>]}
 2022-06-18 21:38:43.762504 (Thread-71): sending response (<Response 1742 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:38:46.062311 (Thread-72): 21:38:46  Unable to do partial parsing because config vars, config profile, or config target have changed
+2022-06-18 21:38:46.062692 (Thread-72): 21:38:46  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd2a44b1970>]}
+2022-06-18 21:38:46.100846 (Thread-72): 21:38:46  Parsing macros/relations.sql
+2022-06-18 21:38:46.102536 (Thread-72): 21:38:46  Parsing macros/adapters.sql
+2022-06-18 21:38:46.124831 (Thread-72): 21:38:46  Parsing macros/catalog.sql
+2022-06-18 21:38:46.127025 (Thread-72): 21:38:46  Parsing macros/materializations/snapshot_merge.sql
+2022-06-18 21:38:46.128690 (Thread-72): 21:38:46  Parsing macros/adapters/metadata.sql
+2022-06-18 21:38:46.135828 (Thread-72): 21:38:46  Parsing macros/adapters/columns.sql
+2022-06-18 21:38:46.145517 (Thread-72): 21:38:46  Parsing macros/adapters/freshness.sql
+2022-06-18 21:38:46.148417 (Thread-72): 21:38:46  Parsing macros/adapters/persist_docs.sql
+2022-06-18 21:38:46.153045 (Thread-72): 21:38:46  Parsing macros/adapters/relation.sql
+2022-06-18 21:38:46.162184 (Thread-72): 21:38:46  Parsing macros/adapters/schema.sql
+2022-06-18 21:38:46.164318 (Thread-72): 21:38:46  Parsing macros/adapters/indexes.sql
+2022-06-18 21:38:46.166984 (Thread-72): 21:38:46  Parsing macros/get_custom_name/get_custom_schema.sql
+2022-06-18 21:38:46.169616 (Thread-72): 21:38:46  Parsing macros/get_custom_name/get_custom_alias.sql
+2022-06-18 21:38:46.171077 (Thread-72): 21:38:46  Parsing macros/get_custom_name/get_custom_database.sql
+2022-06-18 21:38:46.172651 (Thread-72): 21:38:46  Parsing macros/etc/datetime.sql
+2022-06-18 21:38:46.180730 (Thread-72): 21:38:46  Parsing macros/etc/statement.sql
+2022-06-18 21:38:46.185065 (Thread-72): 21:38:46  Parsing macros/generic_test_sql/unique.sql
+2022-06-18 21:38:46.185782 (Thread-72): 21:38:46  Parsing macros/generic_test_sql/not_null.sql
+2022-06-18 21:38:46.186341 (Thread-72): 21:38:46  Parsing macros/generic_test_sql/accepted_values.sql
+2022-06-18 21:38:46.187676 (Thread-72): 21:38:46  Parsing macros/generic_test_sql/relationships.sql
+2022-06-18 21:38:46.188562 (Thread-72): 21:38:46  Parsing macros/materializations/configs.sql
+2022-06-18 21:38:46.190864 (Thread-72): 21:38:46  Parsing macros/materializations/hooks.sql
+2022-06-18 21:38:46.194781 (Thread-72): 21:38:46  Parsing macros/materializations/models/table/table.sql
+2022-06-18 21:38:46.201971 (Thread-72): 21:38:46  Parsing macros/materializations/models/table/create_table_as.sql
+2022-06-18 21:38:46.204802 (Thread-72): 21:38:46  Parsing macros/materializations/models/view/create_or_replace_view.sql
+2022-06-18 21:38:46.207381 (Thread-72): 21:38:46  Parsing macros/materializations/models/view/helpers.sql
+2022-06-18 21:38:46.208701 (Thread-72): 21:38:46  Parsing macros/materializations/models/view/create_view_as.sql
+2022-06-18 21:38:46.210963 (Thread-72): 21:38:46  Parsing macros/materializations/models/view/view.sql
+2022-06-18 21:38:46.217964 (Thread-72): 21:38:46  Parsing macros/materializations/models/incremental/incremental.sql
+2022-06-18 21:38:46.227823 (Thread-72): 21:38:46  Parsing macros/materializations/models/incremental/on_schema_change.sql
+2022-06-18 21:38:46.243534 (Thread-72): 21:38:46  Parsing macros/materializations/models/incremental/is_incremental.sql
+2022-06-18 21:38:46.247239 (Thread-72): 21:38:46  Parsing macros/materializations/models/incremental/merge.sql
+2022-06-18 21:38:46.263484 (Thread-72): 21:38:46  Parsing macros/materializations/models/incremental/column_helpers.sql
+2022-06-18 21:38:46.267821 (Thread-72): 21:38:46  Parsing macros/materializations/seeds/helpers.sql
+2022-06-18 21:38:46.283691 (Thread-72): 21:38:46  Parsing macros/materializations/seeds/seed.sql
+2022-06-18 21:38:46.289530 (Thread-72): 21:38:46  Parsing macros/materializations/tests/helpers.sql
+2022-06-18 21:38:46.291246 (Thread-72): 21:38:46  Parsing macros/materializations/tests/test.sql
+2022-06-18 21:38:46.299723 (Thread-72): 21:38:46  Parsing macros/materializations/tests/where_subquery.sql
+2022-06-18 21:38:46.301543 (Thread-72): 21:38:46  Parsing macros/materializations/snapshots/helpers.sql
+2022-06-18 21:38:46.312490 (Thread-72): 21:38:46  Parsing macros/materializations/snapshots/strategies.sql
+2022-06-18 21:38:46.328836 (Thread-72): 21:38:46  Parsing macros/materializations/snapshots/snapshot_merge.sql
+2022-06-18 21:38:46.330475 (Thread-72): 21:38:46  Parsing macros/materializations/snapshots/snapshot.sql
+2022-06-18 21:38:46.341987 (Thread-72): 21:38:46  Parsing tests/generic/builtin.sql
+2022-06-18 21:38:46.514557 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__replies.sql
+2022-06-18 21:38:46.526823 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__likes.sql
+2022-06-18 21:38:46.527584 (Thread-73): handling status request
+2022-06-18 21:38:46.529626 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__ timelines.sql
+2022-06-18 21:38:46.530257 (Thread-74): handling status request
+2022-06-18 21:38:46.530610 (Thread-73): 21:38:46  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c11bc70>]}
+2022-06-18 21:38:46.533016 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__users.sql
+2022-06-18 21:38:46.533357 (Thread-74): 21:38:46  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c108fd0>]}
+2022-06-18 21:38:46.533807 (Thread-73): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:38:46.535778 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__quotes.sql
+2022-06-18 21:38:46.536202 (Thread-74): sending response (<Response 185 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:38:46.538499 (Thread-72): 21:38:46  1699: static parser successfully parsed staging/twitter/stg_twitter__retweets.sql
+2022-06-18 21:38:46.541230 (Thread-72): 21:38:46  1699: static parser successfully parsed intermediate/int_author_follower_combos_per_tweet.sql
+2022-06-18 21:38:46.543602 (Thread-72): 21:38:46  1699: static parser successfully parsed marts/fct_factless_follower_attribution.sql
+2022-06-18 21:38:46.545761 (Thread-72): 21:38:46  1699: static parser successfully parsed marts/fct_periodic_monthly_active_followers.sql
+2022-06-18 21:38:46.547708 (Thread-72): 21:38:46  1699: static parser successfully parsed marts/dim_users.sql
+2022-06-18 21:38:46.549713 (Thread-72): 21:38:46  1699: static parser successfully parsed marts/dim_tweets.sql
+2022-06-18 21:38:46.551989 (Thread-72): 21:38:46  1699: static parser successfully parsed marts/fct_transaction_interactions_per_tweet_and_follower.sql
+2022-06-18 21:38:46.634142 (Thread-72): 21:38:46  [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.staging.twitter.stg_twitter__timelines
+- models.staging.twitter.stg_twitter__likes
+
+2022-06-18 21:38:46.639550 (Thread-72): 21:38:46  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c0e59d0>]}
+2022-06-18 21:38:47.724730 (Thread-75): handling status request
+2022-06-18 21:38:47.725120 (Thread-75): 21:38:47  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c0974f0>]}
+2022-06-18 21:38:47.726018 (Thread-75): sending response (<Response 18198 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:38:47.749052 (Thread-76): handling status request
+2022-06-18 21:38:47.749359 (Thread-76): 21:38:47  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c0e5c40>]}
+2022-06-18 21:38:47.750173 (Thread-76): sending response (<Response 18198 bytes [200 OK]>) to 10.0.28.122
+2022-06-18 21:39:00.885414 (Thread-77): handling status request
+2022-06-18 21:39:00.885858 (Thread-77): 21:39:00  Sending event: {'category': 'dbt', 'action': 'rpc_request', 'label': 'c9229bdc-5a30-4de0-8410-fd39d16958a8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd28c2789d0>]}
+2022-06-18 21:39:00.886736 (Thread-77): sending response (<Response 18198 bytes [200 OK]>) to 10.0.28.122

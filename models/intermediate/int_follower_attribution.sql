@@ -7,7 +7,7 @@ with first_interaction_per_follower as (
         follower_user_id,
         min(tweet_created_at) as first_interaction_at
     from {{ ref('fct_transaction_interactions_per_tweet_and_follower') }}
-    where is_interaction
+    where count_interactions > 0
     group by 1,2
 )
 

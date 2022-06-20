@@ -1,2 +1,2 @@
 select * from 
-{{ ref('stg_twitter__ timelines') }}
+{{ ref('stg_twitter__timelines') }}

@@ -17,7 +17,7 @@ select
             qu.count_quotes > 0 or
             re.count_replies > 0 or
             ret.count_retweets > 0
-    then true else false end as is_interaction
+    then 1 else 0 end as count_interactions
 from {{ ref('int_author_follower_combos_per_tweet') }} as ac
 left join {{ ref('stg_twitter__likes') }} as li on
     ac.follower_user_id = li.follower_user_id and 

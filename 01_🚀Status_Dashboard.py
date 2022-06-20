@@ -4,14 +4,14 @@ from datetime import date
 
 
 st.set_page_config(
-    page_title="Advanced Twitter Analytics", 
+    page_title="Twitter Growth Analytics", 
     page_icon=":eagle:", 
     layout="wide"
 )
 
 st.title("🚀 Twitter Status Dashboard")
-st.markdown("🪓 Hack your Twitter growth with 🦅 Advanced Twitter Analytics")
-st.sidebar.title("🦅 Advanced Twitter Analytics")
+st.markdown("🪓 Hack your Twitter growth with 🦅Twitter Growth Analytics")
+st.sidebar.title("🦅Twitter Growth Analytics")
 
 user_name = st.text_input("Enter Your User Name", "@parker_brydon")
 user_name = user_name.strip('@')

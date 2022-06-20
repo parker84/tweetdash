@@ -3,19 +3,20 @@
 select 
     ifa.author_user_id,
     ifa.follower_user_id,
-    --activation
-    ifa.first_interaction_at as first_active_at,
     --eligibility
     case 
         when date_part('day', current_date - ifa.first_interaction_at) > 14 
         -- 14 bc you'll have 1 active week, and then we verify they have a full 2nd week to engage
-        then true else false 
-    end as eligible_1w_retention,
+        then 1 else 0
+    end as count_eligible_1w_retention,
     case 
         when date_part('day', current_date - ifa.first_interaction_at) > 35
         -- 35 to ensure the follower has the full possible timespan to interact
-        then true else false 
-    end as eligible_4w_retention,
+        then 1 else 0
+    end as count_eligible_4w_retention,
+    --activation
+    ifa.first_interaction_at as first_active_at,
+    sum(trans.active_follower_transitions) as count_is_active, -- 1 or 0
     --retention
     sum(
         case when trans.transition_number <= 2

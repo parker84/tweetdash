@@ -19,7 +19,7 @@ select
         when date_part('day', current_date - ifa.first_interaction_at) > 35
         -- 35 to ensure the follower has the full possible timespan to interact
         then 1 else 0
-    end as count_eligible_4w_retention,
+    end as count_eligible_4w_retention
 from {{ ref('int_follower_attribution') }} as ifa
 join {{ ref('dim_tweets') }} as dt on 
     ifa.first_interaction_tweet_id = dt.tweet_id

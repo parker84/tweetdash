@@ -20,7 +20,7 @@ with weekly_active_stats as (
             case 
             when trans.transition_number <= 5 and duf.count_eligible_4w_retention=1
             then trans.active_follower_transitions  end
-        ) as count_active_followers_retained_4w,
+        ) as count_active_followers_retained_4w
     from {{ ref('dim_users_followers') }} as duf
     left join {{ ref('int_weekly_active_followers_transitions') }} as trans using (author_user_id, follower_user_id)
     group by 1,2,3

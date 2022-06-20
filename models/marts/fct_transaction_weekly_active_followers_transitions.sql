@@ -16,12 +16,12 @@ select
     case 
         when 
             waf.is_active and (waf_lagged.is_active is null or waf_lagged.is_active = false)
-            then 1
+            then 1 -- activated
         when 
             waf_lagged.is_active and (waf.is_active is null or waf.is_active = false)
-            then -1
-        else 0
-    end as active_follower_transitions,
+            then -1 -- churned
+        else 0 -- stayed the same
+    end as active_follower_transitions, --sum this to get whether the follower is active at some point 
     --qa
     waf_lagged.week_begin_date as qa_last_week_begin_date
 from weekly_active_followers as waf

@@ -10,7 +10,7 @@ with weekly_rollup as (
         sum(count_replies) as count_replies,
         sum(count_retweets) as count_retweets,
         sum(count_quotes) as count_quotes
-    from {{ ref('fct_transaction_interactions_per_tweet_and_follower') }}
+    from {{ ref('fct_transaction_interactions_tweets_followers') }}
     group by 1,2,3
 )
 

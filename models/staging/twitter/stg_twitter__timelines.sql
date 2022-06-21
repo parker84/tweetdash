@@ -3,7 +3,7 @@ select
     id as tweet_id,
     lang as language,
     text as tweet_text,
-    author_id,
+    author_id as author_user_id,
     cast(created_at as timestamp) as tweet_created_at,
     in_reply_to_user_id,
     public_metrics

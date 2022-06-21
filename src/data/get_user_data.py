@@ -17,10 +17,10 @@ class UserData():
         self.user_id = user_id
     
     def _run_query_and_return_df(self, query_filename: str):
-        with open(f'./src/data/sql_queries/{query}.sql', 'r') as f:
-            query = f.read().format(user_id=self.user_id)
-        logging.info(f'Query: {query_filename} \n{query}')
-        df = pd.read_sql(query, db_conn, schema=config('DB_SCHEMA'))
+        with open(f'./src/data/sql_queries/{query_filename}.sql', 'r') as f:
+            query = f.read().format(user_id=self.user_id, schema=config('DB_SCHEMA'))
+        logging.info(f'Query: {query_filename} {query}\n')
+        df = pd.read_sql(query, db_conn)
         return df
 
     def get_weekly_metrics_for_user(self):

@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🎯 Twitter Explorer")
+st.title("🎯 Tweet Explorer")
 st.markdown("🪓 Hack your Twitter growth with 🦅Twitter Growth Analytics")
 st.sidebar.title("🦅Twitter Growth Analytics")
 
@@ -24,3 +24,4 @@ start_date = st.sidebar.date_input(label='Start date', value=date(2022, 6, 1))
 data_getter = UserData(user_id)
 metrics_per_tweet = data_getter.get_tweet_metrics_for_user()
 
+st.dataframe(metrics_per_tweet)

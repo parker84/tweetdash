@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🎯 Twitter Explorer")
+st.title("👣 Follower Explorer")
 st.markdown("🪓 Hack your Twitter growth with 🦅Twitter Growth Analytics")
 st.sidebar.title("🦅Twitter Growth Analytics")
 
@@ -20,6 +20,7 @@ user_id = get_user_id_from_user_name(user_name)
 
 start_date = st.sidebar.date_input(label='Start date', value=date(2022, 6, 1))
 
-
 data_getter = UserData(user_id)
 metrics_per_follower = data_getter.get_follower_metrics_for_user()
+
+st.dataframe(metrics_per_follower)

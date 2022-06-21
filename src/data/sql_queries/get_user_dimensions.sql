@@ -1,4 +1,4 @@
 
 
-select * from dim_users
-where author_user_id = '{user_id}'
+select * from {schema}.dim_users
+where user_id = '{user_id}'

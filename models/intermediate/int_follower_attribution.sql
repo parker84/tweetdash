@@ -20,4 +20,7 @@ from first_interaction_per_follower as fip
 join {{ ref('fct_transaction_interactions_tweets_followers') }} as fti on
     fip.author_user_id = fti.author_user_id and 
     fip.follower_user_id = fti.follower_user_id and 
-    fip.first_interaction_at = fti.tweet_created_at 
+    fip.first_interaction_at = fti.tweet_created_at
+join {{ ref('stg_twitter__users_followers') }} as uf on -- filter to actual followers
+    fip.author_user_id = fti.author_user_id and 
+    fip.follower_user_id = fti.follower_user_id

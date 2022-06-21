@@ -1,5 +1,6 @@
 import streamlit as st
-from src.data.get_tweets_from_user import TweetScraper
+from src.data.scrape_tweets_from_user import TweetScraper
+from src.data.get_user_data import UserData
 from datetime import date
 
 
@@ -19,7 +20,6 @@ user_name = user_name.strip('@')
 start_date = st.sidebar.date_input(label='Start date', value=date(2022, 6, 1))
 
 scraper = TweetScraper(user_name, start_time=f'{str(start_date)}T00:00:00Z')
-user_timeline_df = scraper.get_user_timeline()
-st.dataframe(user_timeline_df)
-user_meta_data_df = scraper.get_user_meta_data()
-st.dataframe(user_meta_data_df)
+data_getter = UserData(scraper.user_id)
+weekly_metrics_for_user = data_getter.get_weekly_metrics_for_user()
+user_meta_data = data_getter.get_user_dimensions()

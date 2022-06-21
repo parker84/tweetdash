@@ -51,6 +51,9 @@ def clean_df_for_postgres(in_df):
             out_df[col] = out_df[col].astype(str)
     return out_df
 
+def get_user_id_from_user_name(user_name):
+    user_dict = connect_to_endpoint("https://api.twitter.com/2/users/by?usernames={}".format(user_name))
+    return user_dict['data'][0]['id']
 
 class TweetScraper():
 
@@ -58,14 +61,11 @@ class TweetScraper():
         self.user_name = user_name
         self.start_time = start_time
         self.end_time = end_time
-        self.user_id = self.get_user_id_from_user_name()
+        self.user_id = get_user_id_from_user_name(user_name)
+        self._scrape_n_save_followers_for_user()
         self.user_timeline_df = self._scrape_n_save_user_timeline()
-        self.user_meta_data_df = self._scrape_n_save_user_meta_data(self.user_id)
+        self._scrape_n_save_user_meta_data(self.user_id)
         self._scrape_n_save_interactions_from_tweets()
-
-    def get_user_id_from_user_name(self):
-        user_dict = connect_to_endpoint("https://api.twitter.com/2/users/by?usernames={}".format(self.user_name))
-        return user_dict['data'][0]['id']
 
     def create_url(self):
         return "https://api.twitter.com/2/users/{}/tweets".format(self.user_id)
@@ -79,9 +79,7 @@ class TweetScraper():
         # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
         # source, text, and withheld
         return {
-            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
-            # "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,organic_metrics,promoted_metrics,public_metrics,referenced_tweets,source,text,withheld",
-            "max_results": 100,
+            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",            "max_results": 100,
             "pagination_token": pagination_token,
             "start_time": self.start_time,
             "end_time": self.end_time
@@ -119,8 +117,27 @@ class TweetScraper():
             schema='twitter'
         )
         return user_timeline_df
+    
 
-    def _scrape_n_save_user_meta_data(self, user_id) -> pd.DataFrame:
+    def _scrape_n_save_followers_for_user(self):
+        params = {
+            "user.fields": "created_at,description,public_metrics,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld"
+        }
+        url = f"https://api.twitter.com/2/users/{self.user_id}/followers"
+        json_response = connect_to_endpoint(url, params)
+        raw_users_followers_df = pd.DataFrame(json_response['data'])
+        users_followers_df = clean_df_for_postgres(raw_users_followers_df)
+        users_followers_df['author_user_id'] = self.user_id
+        users_followers_df.to_sql(
+            name='users_followers',
+            con=db_conn,
+            if_exists='append',
+            schema='twitter'
+        )
+        return 200
+
+
+    def _scrape_n_save_user_meta_data(self, user_id):
         params = {
             "user.fields": "created_at,description,public_metrics,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld"
         }
@@ -134,7 +151,7 @@ class TweetScraper():
             if_exists='append',
             schema='twitter'
         )
-        return user_meta_data_df
+        return 200
 
     def _scrape_n_save_interactions_from_tweets(self) -> int:
         for ix, row in self.user_timeline_df.iterrows():

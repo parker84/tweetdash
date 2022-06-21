@@ -1,10 +1,8 @@
-from cmath import isnan
 import json
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
 import json
-import numpy as np
 from decouple import config
 
 ENGINE_PATH = f"postgresql://{config('DB_USER')}:{config('DB_PWD')}@{config('DB_HOST')}/{config('DB')}"

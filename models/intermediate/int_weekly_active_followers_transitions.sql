@@ -7,12 +7,24 @@ with weekly_active_followers as (
     from {{ ref('int_weekly_active_followers') }}
 )
 
+, author_follower_week_combos as (
+    select distinct 
+        coalesce(waf.author_user_id, waf_lagged.author_user_id) as author_user_id,
+        coalesce(waf.follower_user_id, waf_lagged.follower_user_id) as follower_user_id,
+        coalesce(waf.week_begin_date, waf_lagged.week_begin_date) as week_begin_date
+    from weekly_active_followers as waf
+    full outer join weekly_active_followers as waf_lagged on
+        waf.author_user_id = waf_lagged.author_user_id and 
+        waf.follower_user_id = waf_lagged.follower_user_id and 
+        waf.week_begin_date = waf_lagged.week_begin_date_add_7d
+)
+
 , transitions as (
     select 
         --keys
-        coalesce(waf.author_user_id, waf_lagged.author_user_id) as author_user_id,
-        coalesce(waf.follower_user_id, waf_lagged.follower_user_id) as follower_user_id,
-        coalesce(waf.week_begin_date, waf_lagged.week_begin_date) as week_begin_date,
+        afw.author_user_id,
+        afw.follower_user_id,
+        afw.week_begin_date,
         --transitions
         case 
             when 
@@ -25,11 +37,15 @@ with weekly_active_followers as (
         end as active_follower_transitions, --sum this to get whether the follower is active at some point 
         --qa
         waf_lagged.week_begin_date as qa_last_week_begin_date
-    from weekly_active_followers as waf
-    full outer join weekly_active_followers as waf_lagged on
-        waf.author_user_id = waf_lagged.author_user_id and 
-        waf.follower_user_id = waf_lagged.follower_user_id and 
-        waf.week_begin_date = waf_lagged.week_begin_date_add_7d
+    from author_follower_week_combos as afw
+    left join weekly_active_followers as waf on
+        afw.author_user_id = waf.author_user_id and 
+        afw.follower_user_id = waf.follower_user_id and 
+        afw.week_begin_date = waf.week_begin_date_add_7d
+    left join weekly_active_followers as waf_lagged on
+        afw.author_user_id = waf_lagged.author_user_id and 
+        afw.follower_user_id = waf_lagged.follower_user_id and 
+        afw.week_begin_date = waf_lagged.week_begin_date_add_7d
 )
 
 select 

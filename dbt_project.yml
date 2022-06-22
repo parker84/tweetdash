@@ -34,6 +34,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   tweetdash:
     staging:
-      +materialized: view
+      +materialized: table
+    intermediate:
+      +materialized: table
     marts:
       +materialized: table

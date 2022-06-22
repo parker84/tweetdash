@@ -1,0 +1,127 @@
+version: 2
+
+models:
+  - name: stg_twitter__likes
+    description: Represents likes that a follower made on a tweet from an author. One row per author_user_id, follower_user_id, tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null
+  - name: stg_twitter__quotes
+    description: Represents quotes that a follower made on a tweet from an author. One row per author_user_id, follower_user_id, tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null
+  - name: stg_twitter__replies
+    description: Represents replies that a follower made on a tweet from an author. One row per author_user_id, follower_user_id, tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null
+  - name: stg_twitter__retweets
+    description: Represents retweets that a follower made on a tweet from an author. One row per author_user_id, follower_user_id, tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null
+  - name: stg_twitter__timelines
+    description: Represents tweets from an author. One row per author_user_id, tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null
+  - name: stg_twitter__users_followers
+    description: Represents the followers for an author_user_id. One row per author_user_id, follower_user_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+  - name: stg_twitter__users
+    description: meta data for each user
+    columns: 
+      - name: user_id
+        description: primary key for stg_twitter__users, uniquely identifies a user
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,113 @@
+version: 2
+
+models:
+  - name: dim_tweets
+    description: One row per tweet, including various tweet dimenions
+    tests:
+    columns: 
+      - name: tweet_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+          - unique
+  - name: dim_users_followers
+    description: One row per user and (ever) active follower
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+  - name: dim_users
+    description: One row per user
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - user_id
+    columns: 
+      - name: user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+  - name: fct_accumulating_users_tweets
+    description: Lifetime aggregations per user and follower
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: tweet_id
+        description: uniquely identifies a tweet
+        tests:
+          - not_null
+  - name: fct_periodic_weekly_users_followers
+    description: weekly aggregations per user and follower
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - week_begin_date
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: week_begin_date
+        description: beginning of the week
+        tests:
+          - not_null
+  - name: fct_periodic_weekly_users
+    description: weekly aggregations per user
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - week_begin_date
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: week_begin_date
+        description: beginning of the week
+        tests:
+          - not_null
+  - name: fct_transaction_interactions_tweets_followers
+    description: one row per tweet interaction per follower and author
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: tweet_id
+        description: uniquely identifies a tweet
+        tests:
+          - not_null

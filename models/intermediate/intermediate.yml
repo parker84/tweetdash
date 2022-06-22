@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: int_weekly_active_followers_transitions
+    description: One row per author_user_id, follower_user_id, week_begin_date. Represent whether a follower becomes active / inactive.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - week_begin_date
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: week_begin_date
+        description: beginning of the week
+        tests:
+          - not_null
+  - name: int_follower_attribution
+    description: Represents which tweet can the be attributed to the user becoming an active follower.. One row per author_user_id, follower_user_id, first_interaction_tweet_id.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - author_user_id
+            - follower_user_id
+            - first_interaction_tweet_id
+    columns: 
+      - name: author_user_id
+        description: uniquely identifies an author
+        tests:
+          - not_null
+      - name: follower_user_id
+        description: uniquely identifies a follower
+        tests:
+          - not_null
+      - name: first_interaction_tweet_id
+        description: unique identifier for a tweet
+        tests:
+          - not_null

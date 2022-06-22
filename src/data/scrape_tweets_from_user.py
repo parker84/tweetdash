@@ -1,22 +1,19 @@
+from datetime import datetime
 import json
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
 import json
 from decouple import config
+import coloredlogs, logging
+logger = logging.getLogger(__name__)
+coloredlogs.install(level=config('LOG_LEVEL'))
 
 ENGINE_PATH = f"postgresql://{config('DB_USER')}:{config('DB_PWD')}@{config('DB_HOST')}/{config('DB')}"
 BEARER_TOKEN = config("BEARER_TOKEN")
 
 engine = create_engine(ENGINE_PATH)
 db_conn = engine.connect()
-
-# db_conn.execute('drop table if exists twitter.tweets_liked cascade')
-# db_conn.execute('drop table if exists twitter.tweets_quoted cascade')
-# db_conn.execute('drop table if exists twitter.tweets_replied_to cascade')
-# db_conn.execute('drop table if exists twitter.tweets_retweeted cascade')
-# db_conn.execute('drop table if exists twitter.user_meta_data cascade')
-
 
 def bearer_oauth(r):
     """
@@ -29,7 +26,6 @@ def bearer_oauth(r):
 
 def connect_to_endpoint(url, params=''):
     response = requests.request("GET", url, auth=bearer_oauth, params=params)
-    print(response.status_code)
     if response.status_code != 200:
         raise Exception(
             "Request returned an error: {} {}".format(
@@ -61,10 +57,15 @@ class TweetScraper():
         self.user_name = user_name
         self.start_time = start_time
         self.end_time = end_time
+        logger.info(f'Getting user_id for {user_name}')
         self.user_id = get_user_id_from_user_name(user_name)
-        self._scrape_n_save_followers_for_user()
-        self.user_timeline_df = self._scrape_n_save_user_timeline()
+        logger.info(f'Getting user metadata for {user_name}')
         self._scrape_n_save_user_meta_data(self.user_id)
+        logger.info(f'Getting followers for {user_name}')
+        self._scrape_n_save_followers_for_user()
+        logger.info(f'Getting timeline for {user_name}')
+        self.user_timeline_df = self._scrape_n_save_user_timeline()
+        logger.info(f'Getting tweet engagements for {user_name}')
         self._scrape_n_save_interactions_from_tweets()
 
     def create_url(self):
@@ -110,6 +111,7 @@ class TweetScraper():
                     pd.DataFrame(hundo_tweets['data'])
                 )
         user_timeline_df = clean_df_for_postgres(raw_user_timeline_df)
+        user_timeline_df['row_created_at'] = str(datetime.now())
         user_timeline_df.to_sql(
             name='user_timelines',
             con=db_conn,
@@ -128,6 +130,7 @@ class TweetScraper():
         raw_users_followers_df = pd.DataFrame(json_response['data'])
         users_followers_df = clean_df_for_postgres(raw_users_followers_df)
         users_followers_df['author_user_id'] = self.user_id
+        users_followers_df['row_created_at'] = str(datetime.now())
         users_followers_df.to_sql(
             name='users_followers',
             con=db_conn,
@@ -145,6 +148,7 @@ class TweetScraper():
         json_response = connect_to_endpoint(url, params)
         raw_user_meta_data_df = pd.DataFrame(json_response['data'])
         user_meta_data_df = clean_df_for_postgres(raw_user_meta_data_df)
+        user_meta_data_df['row_created_at'] = str(datetime.now())
         user_meta_data_df.to_sql(
             name='user_meta_data',
             con=db_conn,
@@ -169,6 +173,7 @@ class TweetScraper():
                     likers_df['tweet_id'] = row['id']
                     likers_df['tweet_created_at'] = row['created_at']
                     likers_df['author_id'] = row['author_id']
+                    likers_df['row_created_at'] = str(datetime.now())
                     likers_df.to_sql(
                         name='tweets_liked',
                         con=db_conn,
@@ -181,6 +186,7 @@ class TweetScraper():
                     quoters_df['tweet_id'] = row['id']
                     quoters_df['tweet_created_at'] = row['created_at']
                     quoters_df['author_id'] = row['author_id']
+                    quoters_df['row_created_at'] = str(datetime.now())
                     quoters_df.to_sql(
                         name='tweets_quoted',
                         con=db_conn,
@@ -193,6 +199,7 @@ class TweetScraper():
                     repliers_df['tweet_id'] = row['id']
                     repliers_df['tweet_created_at'] = row['created_at']
                     repliers_df['author_id'] = row['author_id']
+                    repliers_df['row_created_at'] = str(datetime.now())
                     repliers_df.to_sql(
                         name='tweets_replied_to',
                         con=db_conn,
@@ -205,6 +212,7 @@ class TweetScraper():
                     rters_df['tweet_id'] = row['id']
                     rters_df['tweet_created_at'] = row['created_at']
                     rters_df['author_id'] = row['author_id']
+                    rters_df['row_created_at'] = str(datetime.now())
                     rters_df.to_sql(
                         name='tweets_retweeted',
                         con=db_conn,
@@ -250,7 +258,7 @@ class TweetScraper():
         url = f"https://api.twitter.com/2/tweets/search/recent?query=conversation_id:{tweet_id}"
         params = {
             "user.fields": "created_at,id",
-            "tweet.fields": "attachments,author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
+            "tweet.fields": "author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
         }
         json_response = connect_to_endpoint(url, params)
         meta = json_response['meta']
@@ -263,6 +271,8 @@ class TweetScraper():
 
 
 if __name__ == "__main__":
+    # TODO: make this script executable to run over all the users, for the last day?
+        # what if we need more than a day?
     scraper = TweetScraper('parker_brydon', start_time='2022-06-01T00:00:00Z')
     df = scraper.scrape_n_save_user_timeline()
     print(df.shape)

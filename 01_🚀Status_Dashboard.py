@@ -1,9 +1,12 @@
 import streamlit as st
-from src.data.scrape_tweets_from_user import TweetScraper, get_user_id_from_user_name
+from src.data.scrape_tweets_from_user import TweetScraper, get_user_id_from_user_name, db_conn
 from src.data.get_user_data import UserData
+from decouple import config
 from datetime import date
 import plotly.express as px
-
+import coloredlogs, logging
+logger = logging.getLogger(__name__)
+coloredlogs.install(level=config('LOG_LEVEL'))
 
 st.set_page_config(
     page_title="Twitter Growth Analytics", 
@@ -20,8 +23,11 @@ user_name = user_name.strip('@')
 
 start_date = st.sidebar.date_input(label='Start Date', value=date(2022, 6, 1))
 
-scraper = TweetScraper(user_name, start_time=f'{str(start_date)}T00:00:00Z')
 user_id = get_user_id_from_user_name(user_name)
+data_getter = UserData(user_id)
+is_new_user = data_getter.check_if_new_user()
+if is_new_user:
+    scraper = TweetScraper(user_name, start_time=f'{str(start_date)}T00:00:00Z')
 data_getter = UserData(user_id)
 weekly_metrics_for_user = data_getter.get_weekly_metrics_for_user()
 user_meta_data = data_getter.get_user_dimensions()

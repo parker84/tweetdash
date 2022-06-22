@@ -1,4 +1,14 @@
 
+
+with users_followers_with_row_number as (
+    select *,
+        ROW_NUMBER() OVER (
+            PARTITION BY author_user_id, id
+            ORDER BY row_created_at DESC
+        ) as row_number_per_author_and_follower_desc
+    from {{ source('twitter', 'users_followers') }}
+)
+
 select 
     distinct
     cast(author_user_id as varchar) as author_user_id,
@@ -9,4 +19,5 @@ select
     cast(public_metrics as varchar) as follower_public_metrics,
     cast(url as varchar) as follower_url,
     cast(location as varchar) as follower_location
-from {{ source('twitter', 'users_followers') }}
+from users_followers_with_row_number
+where row_number_per_author_and_follower_desc = 1

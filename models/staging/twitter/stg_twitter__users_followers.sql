@@ -18,6 +18,7 @@ select
     cast(description as varchar) as follower_description,
     cast(public_metrics as varchar) as follower_public_metrics,
     cast(url as varchar) as follower_url,
-    cast(location as varchar) as follower_location
+    cast(location as varchar) as follower_location,
+    cast(row_created_at as timestamp) as follower_at
 from users_followers_with_row_number
 where row_number_per_author_and_follower_desc = 1

@@ -7,10 +7,9 @@ select
     week_begin_date,
     --active follower metrics
     sum(count_active_followers) as count_active_followers,
-    sum(count_eligible_active_followers_retained_1w) as count_eligible_active_followers_retained_1w,
-    sum(count_eligible_active_followers_retained_4w) as count_eligible_active_followers_retained_4w,
-    sum(count_active_followers_retained_1w) as count_active_followers_retained_1w,
-    sum(count_active_followers_retained_4w) as count_active_followers_retained_4w,
+    sum(count_net_active_followers) as count_net_active_followers,
+    sum(count_new_active_followers) as count_new_active_followers,
+    sum(count_churned_active_followers) as count_churned_active_followers,
     --engagement
     sum(count_followers_that_interacted) as count_followers_that_interacted,
     sum(count_followers_that_liked) as count_followers_that_liked,

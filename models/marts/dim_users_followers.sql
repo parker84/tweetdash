@@ -2,8 +2,8 @@
 
 
 select 
-    ifa.author_user_id,
-    ifa.follower_user_id,
+    suf.author_user_id,
+    suf.follower_user_id,
     --attribution
     ifa.first_interaction_at,
     ifa.first_interaction_tweet_id,
@@ -20,7 +20,8 @@ select
         -- 35 to ensure the follower has the full possible timespan to interact
         then 1 else 0
     end as count_eligible_4w_retention
-from {{ ref('int_follower_attribution') }} as ifa
+from {{ ref('stg_twitter__users_followers') }} as suf
+left join {{ ref('int_follower_attribution') }} as ifa using (author_user_id, follower_user_id)
 join {{ ref('dim_tweets') }} as dt on 
     ifa.first_interaction_tweet_id = dt.tweet_id
 join {{ ref('dim_users') }} as du on 

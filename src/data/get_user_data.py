@@ -27,7 +27,7 @@ class UserData():
 
     def check_if_new_user(self):
         try:
-            df = self._run_query_and_return_df('get_user_dimensions')
+            df = self._run_query_and_return_df('get_tweet_metrics_for_user')
             is_new_user = df.shape[0] == 0
         except Exception as err:
             logger.warn(f'Error trying to query dim_users: {err}')
@@ -48,4 +48,8 @@ class UserData():
     
     def get_user_dimensions(self):
         df = self._run_query_and_return_df('get_user_dimensions')
+        return df
+
+    def get_cohorted_metrics_for_user(self):
+        df = self._run_query_and_return_df('get_cohorted_metrics_for_user')
         return df

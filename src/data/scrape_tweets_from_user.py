@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 import json
 from decouple import config
 import coloredlogs, logging
+import time
 logger = logging.getLogger(__name__)
 coloredlogs.install(level=config('LOG_LEVEL'))
 
@@ -26,6 +27,10 @@ def bearer_oauth(r):
 
 def connect_to_endpoint(url, params=''):
     response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    if response.status_code == 429:
+        logger.warn('429 status code, sleeping for 15 minutes')
+        time.sleep(60*15)
+        response = requests.request("GET", url, auth=bearer_oauth, params=params)
     if response.status_code != 200:
         raise Exception(
             "Request returned an error: {} {}".format(
@@ -53,7 +58,7 @@ def get_user_id_from_user_name(user_name):
 
 class TweetScraper():
 
-    def __init__(self, user_name, start_time, end_time=None) -> None:
+    def __init__(self, user_name, start_time=None, end_time=None) -> None:
         self.user_name = user_name
         self.start_time = start_time
         self.end_time = end_time
@@ -80,7 +85,7 @@ class TweetScraper():
         # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
         # source, text, and withheld
         return {
-            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",            "max_results": 100,
+            "tweet.fields": "attachments,author_id,context_annotations,created_at,entities,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",            "max_results": 100,
             "pagination_token": pagination_token,
             "start_time": self.start_time,
             "end_time": self.end_time
@@ -258,7 +263,7 @@ class TweetScraper():
         url = f"https://api.twitter.com/2/tweets/search/recent?query=conversation_id:{tweet_id}"
         params = {
             "user.fields": "created_at,id",
-            "tweet.fields": "author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
+            "tweet.fields": "author_id,created_at,entities,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,source,text,withheld",
         }
         json_response = connect_to_endpoint(url, params)
         meta = json_response['meta']

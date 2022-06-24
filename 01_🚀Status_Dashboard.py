@@ -21,34 +21,95 @@ st.sidebar.title("🦅Twitter Growth Analytics")
 user_name = st.text_input("Enter Your User Name", "@parker_brydon")
 user_name = user_name.strip('@')
 
-start_date = st.sidebar.date_input(label='Start Date', value=date(2022, 6, 1))
 
 user_id = get_user_id_from_user_name(user_name)
 data_getter = UserData(user_id)
 is_new_user = data_getter.check_if_new_user()
 if is_new_user:
-    scraper = TweetScraper(user_name, start_time=f'{str(start_date)}T00:00:00Z')
+    with st.spinner('Scraping your twitter data'):
+        scraper = TweetScraper(user_name)
+    st.success('Done!')
 data_getter = UserData(user_id)
-weekly_metrics_for_user = data_getter.get_weekly_metrics_for_user()
+weekly_metrics_for_user = data_getter.get_weekly_metrics_for_user().sort_values(by='week_begin_date')
+weekly_metrics_for_user = weekly_metrics_for_user[
+    ~weekly_metrics_for_user['count_followers_that_interacted'].isnull()
+]
 user_meta_data = data_getter.get_user_dimensions()
+cohorted_metrics_for_user = data_getter.get_cohorted_metrics_for_user().sort_values(by='first_active_week_begin_date')
+cohorted_metrics_for_user = cohorted_metrics_for_user[
+    ~cohorted_metrics_for_user['retention_rate_1w'].isnull()
+].round(2)
 
+col1, col2, col3 = st.columns(3)
 
-weekly_counts_per_user = weekly_metrics_for_user.melt(
-    id_vars='week_begin_date', 
-    value_vars=[
-        'count_active_followers',
-        'count_followers_that_liked',
-        'count_followers_that_replied',
-        'count_followers_that_retweeted',
-        'count_followers_that_quoted'
-    ], var_name='metric', value_name='count'
-).sort_values(by='week_begin_date')
+with col1:
+    st.metric(
+        "Followers Count", user_meta_data['count_followers'].iloc[-1]
+    )
 
-fig = px.line(
-    weekly_counts_per_user,
-    x='week_begin_date', 
-    y='count', 
-    color='metric',
-    title='Weekly Follower Engagement'
-)
-st.plotly_chart(fig, use_container_width=True)
+    weekly_counts_per_user_melted = weekly_metrics_for_user.melt(
+        id_vars='week_begin_date', 
+        value_vars=[
+            'count_active_followers',
+            'count_followers_that_liked',
+            'count_followers_that_replied',
+            'count_followers_that_retweeted',
+            'count_followers_that_quoted'
+        ], var_name='metric', value_name='count'
+    ).sort_values(by='week_begin_date')
+
+    fig = px.line(
+        weekly_counts_per_user_melted,
+        x='week_begin_date', 
+        y='count', 
+        color='metric',
+        title='Weekly Follower Engagement',
+        template='ggplot2'
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+with col2:
+    st.metric(
+        "Active Followers Count", weekly_metrics_for_user['count_active_followers'].iloc[0]
+    )
+
+    weekly_counts_per_user_melted = weekly_metrics_for_user.melt(
+        id_vars='week_begin_date', 
+        value_vars=[
+            'count_net_active_followers',
+            'count_new_active_followers',
+            'count_churned_active_followers'
+        ], var_name='metric', value_name='count'
+    ).sort_values(by='week_begin_date')
+
+    fig = px.line(
+        weekly_counts_per_user_melted,
+        x='week_begin_date',
+        y='count', 
+        color='metric',
+        title='Weekly Active Follower Changes',
+        template='ggplot2'
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+with col3:
+    st.metric(
+        "1 Week Active Follower Retention", cohorted_metrics_for_user['retention_rate_1w'].iloc[-1]
+    )
+    cohorted_metrics_melted = cohorted_metrics_for_user.melt(
+        id_vars='first_active_week_begin_date', 
+        value_vars=[
+            'retention_rate_1w',
+            'retention_rate_4w'
+        ], var_name='metric', value_name='%'
+    ).sort_values(by='first_active_week_begin_date')
+
+    fig = px.line(
+        cohorted_metrics_melted,
+        x='first_active_week_begin_date', 
+        y='%', 
+        color='metric',
+        title='Retention Rates',
+        template='ggplot2'
+    )
+    st.plotly_chart(fig, use_container_width=True)

@@ -15,6 +15,10 @@ select
     cast(description as varchar) as description,
     cast(public_metrics as varchar) as public_metrics,
     cast(url as varchar) as url,
-    cast(location as varchar) as location
+    cast(location as varchar) as location,
+    public_metrics::json->'followers_count' as count_followers,
+    public_metrics::json->'following_count' as count_following,
+    public_metrics::json->'tweet_count' as count_tweets,
+    public_metrics::json->'listed_count' as count_listed
 from user_meta_data
 where update_number_desc = 1

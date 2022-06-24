@@ -57,9 +57,6 @@ with weekly_active_followers as (
         afw.author_user_id = waf_lead.author_user_id and 
         afw.follower_user_id = waf_lead.follower_user_id and 
         afw.week_begin_date = waf_lead.week_begin_date_minus_7d
-    where true
-        and afw.week_begin_date < (select max(week_begin_date) from weekly_active_followers)
-        and afw.week_begin_date > (select min(week_begin_date) from weekly_active_followers)
 )
 
 select 

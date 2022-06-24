@@ -71,7 +71,7 @@ models:
         tests:
           - not_null
       - name: week_begin_date
-        description: beginning of the week
+        description: beginning of the week that metrics are aggregated over
         tests:
           - not_null
   - name: fct_periodic_weekly_users
@@ -87,7 +87,7 @@ models:
         tests:
           - not_null
       - name: week_begin_date
-        description: beginning of the week
+        description: beginning of the week that metrics are aggregated over
         tests:
           - not_null
   - name: fct_transaction_interactions_tweets_followers

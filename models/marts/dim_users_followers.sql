@@ -4,6 +4,16 @@
 select 
     suf.author_user_id,
     suf.follower_user_id,
+    --follower info
+    suf.follower_user_name_readable,
+    suf.follower_user_name,
+    suf.follower_description,
+    suf.follower_url,
+    suf.follower_location,
+    suf.count_followers_followers,
+    suf.count_followers_following,
+    suf.count_followers_tweets,
+    suf.count_followers_listed,
     --attribution
     ifa.first_interaction_at,
     ifa.first_interaction_tweet_id,

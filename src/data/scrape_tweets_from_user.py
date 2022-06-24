@@ -2,7 +2,8 @@ from datetime import datetime
 import json
 import requests
 import pandas as pd
-from sqlalchemy import create_engine
+from settings import db_conn
+from src.data.update_app_data import update_user_scrape_status_to_success
 import json
 from decouple import config
 import coloredlogs, logging
@@ -10,17 +11,11 @@ import time
 logger = logging.getLogger(__name__)
 coloredlogs.install(level=config('LOG_LEVEL'))
 
-ENGINE_PATH = f"postgresql://{config('DB_USER')}:{config('DB_PWD')}@{config('DB_HOST')}/{config('DB')}"
-BEARER_TOKEN = config("BEARER_TOKEN")
-
-engine = create_engine(ENGINE_PATH)
-db_conn = engine.connect()
-
 def bearer_oauth(r):
     """
     Method required by bearer token authentication.
     """
-    r.headers["Authorization"] = f"Bearer {BEARER_TOKEN}"
+    r.headers["Authorization"] = f"Bearer {config('BEARER_TOKEN')}"
     r.headers["User-Agent"] = "v2UserTweetsPython"
     return r
 
@@ -72,6 +67,7 @@ class TweetScraper():
         self.user_timeline_df = self._scrape_n_save_user_timeline()
         logger.info(f'Getting tweet engagements for {user_name}')
         self._scrape_n_save_interactions_from_tweets()
+        update_user_scrape_status_to_success(self.user_id)
 
     def create_url(self):
         return "https://api.twitter.com/2/users/{}/tweets".format(self.user_id)
@@ -273,7 +269,7 @@ class TweetScraper():
             return data
         else:
             return None
-
+            
 
 if __name__ == "__main__":
     # TODO: make this script executable to run over all the users, for the last day?
